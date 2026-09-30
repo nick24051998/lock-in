@@ -1,0 +1,2955 @@
+{
+ "patch": "26.19",
+ "rank": "Emerald+",
+ "updated": "2026-09-30",
+ "sources": {
+  "stats": "lolalytics.com (win rates, counters, items)",
+  "runes": "op.gg / mobalytics (most-played rune page)"
+ },
+ "roles": {
+  "top": {
+   "label": "Top",
+   "ugg": "top",
+   "lol": "top",
+   "champs": [
+    {
+     "name": "Yone",
+     "wr": 50.36,
+     "pr": 8.53,
+     "tier": "S+",
+     "how": "Respect his level 6 all-in. Bait his Q3 knock-up, then punish while his E and dash are down.",
+     "counters": [
+      {
+       "name": "Irelia",
+       "wr_vs": 55.15,
+       "items": [
+        "Blade of The Ruined King",
+        "Death's Dance",
+        "Kraken Slayer"
+       ],
+       "tip": "Stack passive on minions first, then trade when his Q3 isn't ready.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Last Stand"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Triple Tonic",
+         "Jack Of All Trades"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health"
+        ]
+       }
+      },
+      {
+       "name": "Kled",
+       "wr_vs": 55.08,
+       "items": [
+        "Hubris",
+        "Hullbreaker",
+        "Mortal Reminder"
+       ],
+       "tip": "Force early fights with the bear-trap pull; remount and re-engage when he wastes E.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Last Stand"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Demolish",
+         "Bone Plating"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Riven",
+       "wr_vs": 52.82,
+       "items": [
+        "Endless Hunger",
+        "Death's Dance",
+        "Serpent's Fang"
+       ],
+       "tip": "Shield his Q poke with E and win short burst trades before he scales.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Triumph",
+         "Legend: Haste",
+         "Last Stand"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Cash Back",
+         "Jack Of All Trades"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Garen",
+     "wr": 52.69,
+     "pr": 6.41,
+     "tier": "A",
+     "how": "Kite him and stay out of spin range early. Never fight at low HP near his ult.",
+     "counters": [
+      {
+       "name": "Camille",
+       "wr_vs": 55.8,
+       "items": [
+        "Trinity Force",
+        "Ravenous Hydra",
+        "Sterak's Gage"
+       ],
+       "tip": "Hit outer W and short Q trades; wall-hop away when he spins.",
+       "runes": {
+        "primary": "Resolve",
+        "keystone": "Grasp of the Undying",
+        "minors": [
+         "Shield Bash",
+         "Bone Plating",
+         "Unflinching"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Biscuit Delivery"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Kayle",
+       "wr_vs": 55.26,
+       "items": [
+        "Dusk and Dawn",
+        "Guinsoo's Rageblade",
+        "Nashor's Tooth"
+       ],
+       "tip": "Farm safely from range early, dodge his silence, and take over after level 11.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Press the Attack",
+        "minors": [
+         "Absorb Life",
+         "Legend: Alacrity",
+         "Last Stand"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Celerity",
+         "Gathering Storm"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Cho'Gath",
+       "wr_vs": 54.73,
+       "items": [
+        "Sunfire Aegis",
+        "Dead Man's Plate",
+        "Riftmaker"
+       ],
+       "tip": "Poke with Q and Grasp; silence him with W the moment he Qs at you.",
+       "runes": {
+        "primary": "Domination",
+        "keystone": "Hail of Blades",
+        "minors": [
+         "Cheap Shot",
+         "Grisly Mementos",
+         "Ultimate Hunter"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Axiom Arcanist",
+         "Celerity"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Move Speed",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Gangplank",
+     "wr": 52.59,
+     "pr": 5.45,
+     "tier": "A+",
+     "how": "Pressure him before 6. Stay away from barrel chains and all-in right after he uses W.",
+     "counters": [
+      {
+       "name": "Quinn",
+       "wr_vs": 52.71,
+       "items": [
+        "Hubris",
+        "Infinity Edge",
+        "Edge of Night"
+       ],
+       "tip": "Harass from range, deny barrel setups, and roam when he recalls.",
+       "runes": {
+        "primary": "Domination",
+        "keystone": "Electrocute",
+        "minors": [
+         "Sudden Impact",
+         "Grisly Mementos",
+         "Treasure Hunter"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Absolute Focus",
+         "Gathering Storm"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Cho'Gath",
+       "wr_vs": 54.36,
+       "items": [
+        "Heartsteel",
+        "Unending Despair",
+        "Dead Man's Plate"
+       ],
+       "tip": "Out-sustain his poke and knock him up when he walks to his barrels.",
+       "runes": {
+        "primary": "Domination",
+        "keystone": "Hail of Blades",
+        "minors": [
+         "Cheap Shot",
+         "Grisly Mementos",
+         "Ultimate Hunter"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Axiom Arcanist",
+         "Celerity"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Move Speed",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Urgot",
+       "wr_vs": 53.61,
+       "items": [
+        "Youmuu's Ghostblade",
+        "Dead Man's Plate",
+        "Overlord's Bloodmail"
+       ],
+       "tip": "Flip him with E into your W; short trades favor you.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Press the Attack",
+        "minors": [
+         "Triumph",
+         "Legend: Haste",
+         "Last Stand"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Bone Plating",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Fiora",
+     "wr": 52.12,
+     "pr": 4.64,
+     "tier": "S",
+     "how": "Hide your CC from her W parry. Trade when W and her lunge are on cooldown.",
+     "counters": [
+      {
+       "name": "Heimerdinger",
+       "wr_vs": 58.29,
+       "items": [
+        "Zhonya's Hourglass",
+        "Rabadon's Deathcap",
+        "Shadowflame"
+       ],
+       "tip": "Set turrets early and stun only after she has used her parry.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Presence of Mind",
+         "Legend: Haste",
+         "Cut Down"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Absolute Focus",
+         "Gathering Storm"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Malphite",
+       "wr_vs": 57.15,
+       "items": [
+        "Thornmail",
+        "Stormsurge",
+        "Jak'Sho, The Protean"
+       ],
+       "tip": "Poke with Q, rush armor, and ult only after her parry is gone.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Arcane Comet",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Second Wind",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Health Scaling",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Nasus",
+       "wr_vs": 54.38,
+       "items": [
+        "Essence Reaver",
+        "Spirit Visage",
+        "Thornmail"
+       ],
+       "tip": "Stack safely early, then Wither her in long fights.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Fleet Footwork",
+        "minors": [
+         "Triumph",
+         "Legend: Haste",
+         "Last Stand"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Second Wind",
+         "Unflinching"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Health Scaling",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Irelia",
+     "wr": 51.96,
+     "pr": 4.55,
+     "tier": "S-",
+     "how": "Fight her before her passive is stacked. Watch low-HP minions to predict dash resets.",
+     "counters": [
+      {
+       "name": "Warwick",
+       "wr_vs": 58.78,
+       "items": [
+        "Blade of The Ruined King",
+        "Kraken Slayer",
+        "Death's Dance"
+       ],
+       "tip": "Out-sustain her in long trades and fear her when she dives in.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Presence of Mind",
+         "Legend: Alacrity",
+         "Last Stand"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Second Wind",
+         "Revitalize"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Sett",
+       "wr_vs": 58.06,
+       "items": [
+        "Stridebreaker",
+        "Hullbreaker",
+        "Sterak's Gage"
+       ],
+       "tip": "Catch her dash with E, then hit W after absorbing her burst.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Last Stand"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Second Wind",
+         "Unflinching"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Malphite",
+       "wr_vs": 55.67,
+       "items": [
+        "Malignance",
+        "Hollow Radiance",
+        "Kaenic Rookern"
+       ],
+       "tip": "Slow her with Q and stack armor; her auto-based damage falls off against you.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Arcane Comet",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Second Wind",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Health Scaling",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Camille",
+     "wr": 52,
+     "pr": 4.23,
+     "tier": "S-",
+     "how": "Dodge outer W and her wall-hook stun. Fight away from walls when E is down.",
+     "counters": [
+      {
+       "name": "Warwick",
+       "wr_vs": 55.53,
+       "items": [
+        "Stridebreaker",
+        "Kraken Slayer",
+        "Death's Dance"
+       ],
+       "tip": "Sustain through short trades and fear her when she all-ins.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Presence of Mind",
+         "Legend: Alacrity",
+         "Last Stand"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Second Wind",
+         "Revitalize"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Poppy",
+       "wr_vs": 53.96,
+       "items": [
+        "Heartsteel",
+        "Iceborn Gauntlet",
+        "Spirit Visage"
+       ],
+       "tip": "Hold W to stop her hook-dash, then E her into a wall.",
+       "runes": {
+        "primary": "Resolve",
+        "keystone": "Grasp of the Undying",
+        "minors": [
+         "Shield Bash",
+         "Second Wind",
+         "Overgrowth"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Presence of Mind",
+         "Last Stand"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health"
+        ]
+       }
+      },
+      {
+       "name": "Jax",
+       "wr_vs": 52.23,
+       "items": [
+        "Blade of The Ruined King",
+        "Hextech Gunblade",
+        "Zhonya's Hourglass"
+       ],
+       "tip": "Counter Strike when she hooks in, then trade back with Q and W.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Last Stand"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Bone Plating",
+         "Unflinching"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "jungle": {
+   "label": "Jungle",
+   "ugg": "jungle",
+   "lol": "jungle",
+   "champs": [
+    {
+     "name": "Wukong",
+     "wr": 54.02,
+     "pr": 6.61,
+     "tier": "S+",
+     "how": "Don't fight right after his clone ult. Keep CC ready for his engage and track his clears.",
+     "counters": [
+      {
+       "name": "Jayce",
+       "wr_vs": 59.17,
+       "items": [
+        "Voltaic Cyclosword",
+        "Bastionbreaker",
+        "Edge of Night"
+       ],
+       "tip": "Poke from range in cannon form and knock him away when he commits.",
+       "runes": {
+        "primary": "Inspiration",
+        "keystone": "First Strike",
+        "minors": [
+         "Cash Back",
+         "Triple Tonic",
+         "Cosmic Insight"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Legend: Haste",
+         "Cut Down"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Volibear",
+       "wr_vs": 58.85,
+       "items": [
+        "Dusk and Dawn",
+        "Navori Flickerblade",
+        "Spirit Visage"
+       ],
+       "tip": "Take early skirmishes; your stun and sustain win long duels.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Haste",
+         "Last Stand"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Jack Of All Trades"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Vi",
+       "wr_vs": 58.19,
+       "items": [
+        "Trinity Force",
+        "Sundered Sky",
+        "Guardian Angel"
+       ],
+       "tip": "Lock him down with your ult; the clone can't dodge it.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Triumph",
+         "Legend: Haste",
+         "Coup de Grace"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Cho'Gath",
+     "wr": 53.53,
+     "pr": 6.8,
+     "tier": "S+",
+     "how": "Punish his slow early clears with invades and dodge his Q before trading.",
+     "counters": [
+      {
+       "name": "Hecarim",
+       "wr_vs": 57.31,
+       "items": [
+        "Spear of Shojin",
+        "Death's Dance",
+        "Endless Hunger"
+       ],
+       "tip": "Out-clear him and gank more often; he can't keep up with your speed.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Stormraider's Surge",
+        "minors": [
+         "Nimbus Cloak",
+         "Celerity",
+         "Waterwalking"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Triumph",
+         "Legend: Haste"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Karthus",
+       "wr_vs": 58.2,
+       "items": [
+        "Blackfire Torch",
+        "Liandry's Torment",
+        "Shadowflame"
+       ],
+       "tip": "Full-clear fast, farm safely, and ult low lanes from anywhere.",
+       "runes": {
+        "primary": "Domination",
+        "keystone": "Dark Harvest",
+        "minors": [
+         "Cheap Shot",
+         "Grisly Mementos",
+         "Ultimate Hunter"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Axiom Arcanist",
+         "Gathering Storm"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Pantheon",
+       "wr_vs": 59.88,
+       "items": [
+        "Eclipse",
+        "Black Cleaver",
+        "Guardian Angel"
+       ],
+       "tip": "Invade early; Cho is weak before he has stacks. Small sample, careful.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Triumph",
+         "Legend: Haste",
+         "Coup de Grace"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Master Yi",
+     "wr": 52.89,
+     "pr": 6.55,
+     "tier": "S",
+     "how": "Save hard CC for after Alpha Strike and deny his farm before his item spikes.",
+     "counters": [
+      {
+       "name": "Rengar",
+       "wr_vs": 58.46,
+       "items": [
+        "Umbral Glaive",
+        "Profane Hydra",
+        "Lord Dominik's Regards"
+       ],
+       "tip": "Burst him out of a bush before he can Alpha Strike away.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Fleet Footwork",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Cut Down"
+        ],
+        "secondary": "Domination",
+        "sec": [
+         "Sudden Impact",
+         "Ultimate Hunter"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Jarvan IV",
+       "wr_vs": 56.34,
+       "items": [
+        "Profane Hydra",
+        "Voltaic Cyclosword",
+        "Bastionbreaker"
+       ],
+       "tip": "Cage him with R so Alpha Strike has nowhere to go, then EQ.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Coup de Grace"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Xin Zhao",
+       "wr_vs": 57.09,
+       "items": [
+        "Titanic Hydra",
+        "Black Cleaver",
+        "Sundered Sky"
+       ],
+       "tip": "Knock him up and duel early; you win before his items.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Coup de Grace"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Nidalee",
+     "wr": 52.59,
+     "pr": 3.03,
+     "tier": "S",
+     "how": "Survive her level 2 to 6 pressure, then outscale. Group so she can't pick off lone targets.",
+     "counters": [
+      {
+       "name": "Graves",
+       "wr_vs": 55.56,
+       "items": [
+        "Hubris",
+        "The Collector",
+        "Immortal Shieldbow"
+       ],
+       "tip": "Out-farm her and win 1v1s up close, where spears don't matter.",
+       "runes": {
+        "primary": "Domination",
+        "keystone": "Dark Harvest",
+        "minors": [
+         "Sudden Impact",
+         "Grisly Mementos",
+         "Treasure Hunter"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Triumph",
+         "Legend: Alacrity"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Kindred",
+       "wr_vs": 58.43,
+       "items": [
+        "Trinity Force",
+        "The Collector",
+        "Infinity Edge"
+       ],
+       "tip": "Contest her camps early, stack marks, and outscale her.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Press the Attack",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Coup de Grace"
+        ],
+        "secondary": "Domination",
+        "sec": [
+         "Sudden Impact",
+         "Treasure Hunter"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Kha'Zix",
+       "wr_vs": 54.47,
+       "items": [
+        "Umbral Glaive",
+        "Bastionbreaker",
+        "Voltaic Cyclosword"
+       ],
+       "tip": "Catch her isolated in her jungle; one combo kills her.",
+       "runes": {
+        "primary": "Inspiration",
+        "keystone": "First Strike",
+        "minors": [
+         "Cash Back",
+         "Triple Tonic",
+         "Cosmic Insight"
+        ],
+        "secondary": "Domination",
+        "sec": [
+         "Sudden Impact",
+         "Treasure Hunter"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Talon",
+     "wr": 52.08,
+     "pr": 6.14,
+     "tier": "S",
+     "how": "Ward his wall-hop paths and invade when he's low after squishy clears.",
+     "counters": [
+      {
+       "name": "Viego",
+       "wr_vs": 55.21,
+       "items": [
+        "Kraken Slayer",
+        "The Collector",
+        "Immortal Shieldbow"
+       ],
+       "tip": "Take long fights around objectives and reset with possessions.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Coup de Grace"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Nocturne",
+       "wr_vs": 55.4,
+       "items": [
+        "Experimental Hexplate",
+        "Stridebreaker",
+        "Guardian Angel"
+       ],
+       "tip": "Spell-shield his burst with W and ult him when he wanders your jungle.",
+       "runes": {
+        "primary": "Domination",
+        "keystone": "Hail of Blades",
+        "minors": [
+         "Sudden Impact",
+         "Grisly Mementos",
+         "Ultimate Hunter"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Triumph",
+         "Legend: Alacrity"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Ekko",
+       "wr_vs": 55.62,
+       "items": [
+        "Nashor's Tooth",
+        "Dusk and Dawn",
+        "Rabadon's Deathcap"
+       ],
+       "tip": "Rewind his burst with R and stun him with W when he jumps in.",
+       "runes": {
+        "primary": "Domination",
+        "keystone": "Dark Harvest",
+        "minors": [
+         "Sudden Impact",
+         "Grisly Mementos",
+         "Treasure Hunter"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Lee Sin",
+     "wr": 50.96,
+     "pr": 12.86,
+     "tier": "S-",
+     "how": "Survive his early aggression and ward a lot. He falls off, so scale and fight together.",
+     "counters": [
+      {
+       "name": "Zed",
+       "wr_vs": 53.75,
+       "items": [
+        "Voltaic Cyclosword",
+        "Bastionbreaker",
+        "Axiom Arc"
+       ],
+       "tip": "Match his early aggression and dodge his Q with shadow swaps.",
+       "runes": {
+        "primary": "Inspiration",
+        "keystone": "First Strike",
+        "minors": [
+         "Cash Back",
+         "Triple Tonic",
+         "Cosmic Insight"
+        ],
+        "secondary": "Domination",
+        "sec": [
+         "Sudden Impact",
+         "Treasure Hunter"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Kha'Zix",
+       "wr_vs": 52.99,
+       "items": [
+        "Umbral Glaive",
+        "Bastionbreaker",
+        "Voltaic Cyclosword"
+       ],
+       "tip": "Hunt him when he's isolated after a flashy play.",
+       "runes": {
+        "primary": "Inspiration",
+        "keystone": "First Strike",
+        "minors": [
+         "Cash Back",
+         "Triple Tonic",
+         "Cosmic Insight"
+        ],
+        "secondary": "Domination",
+        "sec": [
+         "Sudden Impact",
+         "Treasure Hunter"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Pantheon",
+       "wr_vs": 53.95,
+       "items": [
+        "Eclipse",
+        "Black Cleaver",
+        "Guardian Angel"
+       ],
+       "tip": "Win early duels; your stun and burst beat his level 3.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Triumph",
+         "Legend: Haste",
+         "Coup de Grace"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "mid": {
+   "label": "Mid",
+   "ugg": "mid",
+   "lol": "middle",
+   "champs": [
+    {
+     "name": "Yone",
+     "wr": 52.1,
+     "pr": 8.03,
+     "tier": "S+",
+     "how": "Play ranged and hold your CC until he dashes in with E.",
+     "counters": [
+      {
+       "name": "Aurelion Sol",
+       "wr_vs": 58.35,
+       "items": [
+        "Rylai's Crystal Scepter",
+        "Blackfire Torch",
+        "Liandry's Torment"
+       ],
+       "tip": "Play safe early, stack, and kite him with Rylai's slows later.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Deathfire Touch",
+        "minors": [
+         "Manaflow Band",
+         "Absolute Focus",
+         "Scorch"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Bone Plating",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Azir",
+       "wr_vs": 56.25,
+       "items": [
+        "Nashor's Tooth",
+        "Rabadon's Deathcap",
+        "Zhonya's Hourglass"
+       ],
+       "tip": "Poke with soldiers from max range and knock him away with R when he commits.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Press the Attack",
+        "minors": [
+         "Presence of Mind",
+         "Legend: Alacrity",
+         "Cut Down"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Bone Plating",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Malphite",
+       "wr_vs": 57.1,
+       "items": [
+        "Sunfire Aegis",
+        "Frozen Heart",
+        "Rabadon's Deathcap"
+       ],
+       "tip": "Your shield and armor blunt his trades; hold R for his all-in.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Arcane Comet",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Second Wind",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Ahri",
+     "wr": 52.32,
+     "pr": 9.05,
+     "tier": "S+",
+     "how": "Stay behind minions so charm can't reach you, and trade when charm is on cooldown.",
+     "counters": [
+      {
+       "name": "Orianna",
+       "wr_vs": 56.24,
+       "items": [
+        "Blackfire Torch",
+        "Hextech Rocketbelt",
+        "Rabadon's Deathcap"
+       ],
+       "tip": "Poke with Q and autos; keep the ball on yourself against charm.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Summon Aery",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Presence of Mind",
+         "Legend: Haste"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Malzahar",
+       "wr_vs": 55.91,
+       "items": [
+        "Blackfire Torch",
+        "Rylai's Crystal Scepter",
+        "Liandry's Torment"
+       ],
+       "tip": "Your spell shield eats charm; suppress her when she dashes in.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Deathfire Touch",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Ryze",
+       "wr_vs": 56.83,
+       "items": [
+        "Rod of Ages",
+        "Archangel's Staff",
+        "Rabadon's Deathcap"
+       ],
+       "tip": "Scale safely, then out-damage her once her dashes are gone.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Deathfire Touch",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Bone Plating",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Xerath",
+     "wr": 53.11,
+     "pr": 4.51,
+     "tier": "S",
+     "how": "Sidestep his poke, get your jungler to gank, and catch him with no escape.",
+     "counters": [
+      {
+       "name": "Mel",
+       "wr_vs": 63.25,
+       "items": [
+        "Luden's Echo",
+        "Shadowflame",
+        "Mejai's Soulstealer"
+       ],
+       "tip": "Reflect his big spells with W and poke him back.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Arcane Comet",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Presence of Mind",
+         "Coup de Grace"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Orianna",
+       "wr_vs": 58.2,
+       "items": [
+        "Blackfire Torch",
+        "Hextech Rocketbelt",
+        "Rabadon's Deathcap"
+       ],
+       "tip": "Out-trade him with autos and catch him with Rocketbelt into R.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Summon Aery",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Presence of Mind",
+         "Legend: Haste"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Veigar",
+       "wr_vs": 56.57,
+       "items": [
+        "Luden's Echo",
+        "Rabadon's Deathcap",
+        "Stormsurge"
+       ],
+       "tip": "Farm stacks, then cage him while he's rooted charging Q or R.",
+       "runes": {
+        "primary": "Inspiration",
+        "keystone": "First Strike",
+        "minors": [
+         "Magical Footwear",
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Manaflow Band",
+         "Transcendence"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Yasuo",
+     "wr": 51.6,
+     "pr": 9,
+     "tier": "S",
+     "how": "Bait his wind wall before key projectiles and keep waves thin so he can't dash around.",
+     "counters": [
+      {
+       "name": "Mel",
+       "wr_vs": 59.94,
+       "items": [
+        "Luden's Echo",
+        "Shadowflame",
+        "Mejai's Soulstealer"
+       ],
+       "tip": "Reflect his tornado with W and poke him from range.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Arcane Comet",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Presence of Mind",
+         "Coup de Grace"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Ryze",
+       "wr_vs": 59.24,
+       "items": [
+        "Rod of Ages",
+        "Archangel's Staff",
+        "Rabadon's Deathcap"
+       ],
+       "tip": "Root him when he dashes in; targeted spells ignore wind wall.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Deathfire Touch",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Bone Plating",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Diana",
+       "wr_vs": 56.21,
+       "items": [
+        "Stormsurge",
+        "Lich Bane",
+        "Rabadon's Deathcap"
+       ],
+       "tip": "Burst him at levels 3 and 6 before he gets crit items.",
+       "runes": {
+        "primary": "Domination",
+        "keystone": "Electrocute",
+        "minors": [
+         "Sudden Impact",
+         "Grisly Mementos",
+         "Treasure Hunter"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Shield Bash",
+         "Bone Plating"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Viktor",
+     "wr": 51.86,
+     "pr": 9.38,
+     "tier": "S",
+     "how": "Pressure him early before his upgrades and walk out of his gravity field fast.",
+     "counters": [
+      {
+       "name": "Mel",
+       "wr_vs": 59.6,
+       "items": [
+        "Luden's Echo",
+        "Shadowflame",
+        "Mejai's Soulstealer"
+       ],
+       "tip": "Reflect his laser and ult with W and win early poke trades.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Arcane Comet",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Presence of Mind",
+         "Coup de Grace"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Malzahar",
+       "wr_vs": 56.4,
+       "items": [
+        "Blackfire Torch",
+        "Rylai's Crystal Scepter",
+        "Liandry's Torment"
+       ],
+       "tip": "Push with voidlings and roam; suppress him if he steps up without Flash.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Deathfire Touch",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Ryze",
+       "wr_vs": 56.46,
+       "items": [
+        "Rod of Ages",
+        "Archangel's Staff",
+        "Rabadon's Deathcap"
+       ],
+       "tip": "Survive his early poke, then out-sustain him in long fights.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Deathfire Touch",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Bone Plating",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Katarina",
+     "wr": 52.27,
+     "pr": 6.84,
+     "tier": "S-",
+     "how": "Deny resets with point-and-click or hard CC, and don't stand near her daggers.",
+     "counters": [
+      {
+       "name": "Syndra",
+       "wr_vs": 57.13,
+       "items": [
+        "Blackfire Torch",
+        "Cosmic Drive",
+        "Rabadon's Deathcap"
+       ],
+       "tip": "Poke her away from daggers and hold your stun for her Shunpo.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Arcane Comet",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Triple Tonic",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Taliyah",
+       "wr_vs": 58.04,
+       "items": [
+        "Luden's Echo",
+        "Shadowflame",
+        "Zhonya's Hourglass"
+       ],
+       "tip": "Lay E on the ground and knock her back with W when she jumps in.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Deathfire Touch",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Presence of Mind",
+         "Legend: Haste"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Orianna",
+       "wr_vs": 56.81,
+       "items": [
+        "Blackfire Torch",
+        "Hextech Rocketbelt",
+        "Rabadon's Deathcap"
+       ],
+       "tip": "Out-poke her and cancel her ult with your Shockwave.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Summon Aery",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Precision",
+        "sec": [
+         "Presence of Mind",
+         "Legend: Haste"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "adc": {
+   "label": "ADC",
+   "ugg": "adc",
+   "lol": "bottom",
+   "champs": [
+    {
+     "name": "Jinx",
+     "wr": 54.41,
+     "pr": 17.08,
+     "tier": "S+",
+     "how": "Deny her early with hard trades and engages before her resets snowball fights.",
+     "counters": [
+      {
+       "name": "Twitch",
+       "wr_vs": 50.35,
+       "items": [
+        "The Collector",
+        "Infinity Edge",
+        "Lord Dominik's Regards"
+       ],
+       "tip": "Farm safe, then flank from stealth once Chompers are used.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Cut Down"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Axiom Arcanist",
+         "Gathering Storm"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Kog'Maw",
+       "wr_vs": 47.74,
+       "items": [
+        "Guinsoo's Rageblade",
+        "Runaan's Hurricane",
+        "Terminus"
+       ],
+       "tip": "Least-bad pick: survive lane and outrange her in front-to-back fights.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Bloodline",
+         "Last Stand"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Conditioning",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Xayah",
+       "wr_vs": 47.57,
+       "items": [
+        "Yun Tal Wildarrows",
+        "Navori Flickerblade",
+        "Hexoptics C44"
+       ],
+       "tip": "Least-bad pick: hold your R for her rockets or dives.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Presence of Mind",
+         "Legend: Bloodline",
+         "Coup de Grace"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Biscuit Delivery"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Tristana",
+     "wr": 53.21,
+     "pr": 10.39,
+     "tier": "S",
+     "how": "Track her W. Once Rocket Jump is used, collapse on her.",
+     "counters": [
+      {
+       "name": "Jinx",
+       "wr_vs": 48.94,
+       "items": [
+        "Hexoptics C44",
+        "Runaan's Hurricane",
+        "Infinity Edge"
+       ],
+       "tip": "Drop Chompers under yourself when she jumps in.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Presence of Mind",
+         "Legend: Bloodline",
+         "Cut Down"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Cash Back",
+         "Triple Tonic"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health"
+        ]
+       }
+      },
+      {
+       "name": "Xayah",
+       "wr_vs": 48.66,
+       "items": [
+        "Yun Tal Wildarrows",
+        "Navori Flickerblade",
+        "Hexoptics C44"
+       ],
+       "tip": "Dodge her all-in with R and root her as feathers return.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Presence of Mind",
+         "Legend: Bloodline",
+         "Coup de Grace"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Biscuit Delivery"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Corki",
+       "wr_vs": 48.45,
+       "items": [
+        "Essence Reaver",
+        "The Collector",
+        "Infinity Edge"
+       ],
+       "tip": "Poke from range and save Valkyrie for her jump.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Presence of Mind",
+         "Legend: Alacrity",
+         "Cut Down"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Cash Back",
+         "Triple Tonic"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Yunara",
+     "wr": 52.1,
+     "pr": 15.76,
+     "tier": "S-",
+     "how": "Pressure her early; force fights before her second item.",
+     "counters": [
+      {
+       "name": "Twitch",
+       "wr_vs": 51.09,
+       "items": [
+        "The Collector",
+        "Infinity Edge",
+        "Lord Dominik's Regards"
+       ],
+       "tip": "Stack venom with short trades and ambush her out of position.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Cut Down"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Axiom Arcanist",
+         "Gathering Storm"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Kog'Maw",
+       "wr_vs": 50.84,
+       "items": [
+        "Guinsoo's Rageblade",
+        "Runaan's Hurricane",
+        "Terminus"
+       ],
+       "tip": "Scale up behind your frontline and out-DPS her.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Bloodline",
+         "Last Stand"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Conditioning",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Zeri",
+       "wr_vs": 50.51,
+       "items": [
+        "Yun Tal Wildarrows",
+        "Runaan's Hurricane",
+        "Infinity Edge"
+       ],
+       "tip": "Kite with mobility and trade in short bursts.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Bloodline",
+         "Cut Down"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Cash Back",
+         "Triple Tonic"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Kai'Sa",
+     "wr": 51.13,
+     "pr": 18.08,
+     "tier": "A",
+     "how": "Punish her weak early lane and stay grouped so her R dive loses value.",
+     "counters": [
+      {
+       "name": "Nilah",
+       "wr_vs": 52.91,
+       "items": [
+        "The Collector",
+        "Infinity Edge",
+        "Navori Flickerblade"
+       ],
+       "tip": "All-in at levels 2 and 3 with your support.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Conqueror",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Last Stand"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Cash Back",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Xayah",
+       "wr_vs": 52.24,
+       "items": [
+        "Yun Tal Wildarrows",
+        "Navori Flickerblade",
+        "Hexoptics C44"
+       ],
+       "tip": "Save R for her dive, then root her.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Presence of Mind",
+         "Legend: Bloodline",
+         "Coup de Grace"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Biscuit Delivery"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Yunara",
+       "wr_vs": 52.16,
+       "items": [
+        "Yun Tal Wildarrows",
+        "Runaan's Hurricane",
+        "Infinity Edge"
+       ],
+       "tip": "Trade evenly early and outscale her.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Alacrity",
+         "Cut Down"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Biscuit Delivery"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Jhin",
+     "wr": 51.5,
+     "pr": 16.94,
+     "tier": "A+",
+     "how": "Engage after his fourth shot or during reload; he has no escape.",
+     "counters": [
+      {
+       "name": "Zeri",
+       "wr_vs": 51.29,
+       "items": [
+        "Yun Tal Wildarrows",
+        "Runaan's Hurricane",
+        "Infinity Edge"
+       ],
+       "tip": "Dodge his W and dive during reloads.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Bloodline",
+         "Cut Down"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Cash Back",
+         "Triple Tonic"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Tristana",
+       "wr_vs": 50.92,
+       "items": [
+        "Yun Tal Wildarrows",
+        "Infinity Edge",
+        "Hexoptics C44"
+       ],
+       "tip": "Jump on him after the fourth shot and burst with E.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Bloodline",
+         "Cut Down"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Cash Back",
+         "Triple Tonic"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Kog'Maw",
+       "wr_vs": 50.81,
+       "items": [
+        "Guinsoo's Rageblade",
+        "Runaan's Hurricane",
+        "Terminus"
+       ],
+       "tip": "Absorb his early poke and outscale his DPS.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Bloodline",
+         "Last Stand"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Conditioning",
+         "Overgrowth"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Caitlyn",
+     "wr": 51.13,
+     "pr": 15.38,
+     "tier": "A-",
+     "how": "Respect her range, avoid traps, and punish her once someone engages on her.",
+     "counters": [
+      {
+       "name": "Jinx",
+       "wr_vs": 50.85,
+       "items": [
+        "Hexoptics C44",
+        "Runaan's Hurricane",
+        "Infinity Edge"
+       ],
+       "tip": "Give up some lane, farm with rockets, and outscale.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Presence of Mind",
+         "Legend: Bloodline",
+         "Cut Down"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Cash Back",
+         "Triple Tonic"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health"
+        ]
+       }
+      },
+      {
+       "name": "Tristana",
+       "wr_vs": 50.25,
+       "items": [
+        "Yun Tal Wildarrows",
+        "Infinity Edge",
+        "Hexoptics C44"
+       ],
+       "tip": "All-in after her net is used.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Triumph",
+         "Legend: Bloodline",
+         "Cut Down"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Cash Back",
+         "Triple Tonic"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Xayah",
+       "wr_vs": 50.22,
+       "items": [
+        "Yun Tal Wildarrows",
+        "Navori Flickerblade",
+        "Hexoptics C44"
+       ],
+       "tip": "Trade safely, avoid traps, root her when she steps up.",
+       "runes": {
+        "primary": "Precision",
+        "keystone": "Lethal Tempo",
+        "minors": [
+         "Presence of Mind",
+         "Legend: Bloodline",
+         "Coup de Grace"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Magical Footwear",
+         "Biscuit Delivery"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "support": {
+   "label": "Support",
+   "ugg": "support",
+   "lol": "support",
+   "champs": [
+    {
+     "name": "Thresh",
+     "wr": 53.75,
+     "pr": 14.77,
+     "tier": "S+",
+     "how": "Stand behind minions and punish him hard whenever his hook is on cooldown.",
+     "counters": [
+      {
+       "name": "Braum",
+       "wr_vs": 52.13,
+       "items": [
+        "Solstice Sleigh",
+        "Locket of the Iron Solari",
+        "Mercury's Treads"
+       ],
+       "tip": "Block hooks with E and stack passive with your ADC.",
+       "runes": {
+        "primary": "Resolve",
+        "keystone": "Guardian",
+        "minors": [
+         "Font of Life",
+         "Bone Plating",
+         "Unflinching"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Health Scaling",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Zilean",
+       "wr_vs": 51.98,
+       "items": [
+        "Solstice Sleigh",
+        "Ionian Boots of Lucidity",
+        "Bandlepipes"
+       ],
+       "tip": "Double-bomb poke from range; save R for a hooked ADC.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Summon Aery",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Waterwalking"
+        ],
+        "secondary": "Domination",
+        "sec": [
+         "Cheap Shot",
+         "Relentless Hunter"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Renata Glasc",
+       "wr_vs": 51.09,
+       "items": [
+        "Celestial Opposition",
+        "Ionian Boots of Lucidity",
+        "Shurelya's Battlesong"
+       ],
+       "tip": "Use W to turn his engage around, then pull him away with Q.",
+       "runes": {
+        "primary": "Resolve",
+        "keystone": "Guardian",
+        "minors": [
+         "Shield Bash",
+         "Bone Plating",
+         "Unflinching"
+        ],
+        "secondary": "Domination",
+        "sec": [
+         "Sixth Sense",
+         "Relentless Hunter"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Lulu",
+     "wr": 51.84,
+     "pr": 13.45,
+     "tier": "S",
+     "how": "Go all-in early, before her shields and polymorph scale.",
+     "counters": [
+      {
+       "name": "Leona",
+       "wr_vs": 54.68,
+       "items": [
+        "Solstice Sleigh",
+        "Locket of the Iron Solari",
+        "Knight's Vow"
+       ],
+       "tip": "All-in at level 2 or 3; she can't peel your whole stun chain.",
+       "runes": {
+        "primary": "Resolve",
+        "keystone": "Aftershock",
+        "minors": [
+         "Font of Life",
+         "Second Wind",
+         "Overgrowth"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Health Scaling",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      },
+      {
+       "name": "Blitzcrank",
+       "wr_vs": 53.53,
+       "items": [
+        "Bloodsong",
+        "Boots of Swiftness",
+        "Locket of the Iron Solari"
+       ],
+       "tip": "Hook Lulu herself; without her shields the ADC is open.",
+       "runes": {
+        "primary": "Inspiration",
+        "keystone": "Glacial Augment",
+        "minors": [
+         "Hextech Flashtraption",
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Nimbus Cloak",
+         "Celerity"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Health Scaling",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Thresh",
+       "wr_vs": 53.28,
+       "items": [
+        "Solstice Sleigh",
+        "Ionian Boots of Lucidity",
+        "Locket of the Iron Solari"
+       ],
+       "tip": "Hook and flay from max range to dodge polymorph.",
+       "runes": {
+        "primary": "Resolve",
+        "keystone": "Aftershock",
+        "minors": [
+         "Font of Life",
+         "Bone Plating",
+         "Unflinching"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Nami",
+     "wr": 52.12,
+     "pr": 8.78,
+     "tier": "A+",
+     "how": "Sidestep her bubble and go in right after she uses Q or E.",
+     "counters": [
+      {
+       "name": "Braum",
+       "wr_vs": 54.52,
+       "items": [
+        "Solstice Sleigh",
+        "Locket of the Iron Solari",
+        "Mercury's Treads"
+       ],
+       "tip": "Block her poke with E and stack stuns when she's out of mana.",
+       "runes": {
+        "primary": "Resolve",
+        "keystone": "Guardian",
+        "minors": [
+         "Font of Life",
+         "Bone Plating",
+         "Unflinching"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Health Scaling",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Blitzcrank",
+       "wr_vs": 54.08,
+       "items": [
+        "Bloodsong",
+        "Boots of Swiftness",
+        "Locket of the Iron Solari"
+       ],
+       "tip": "Hook right after she throws her bubble.",
+       "runes": {
+        "primary": "Inspiration",
+        "keystone": "Glacial Augment",
+        "minors": [
+         "Hextech Flashtraption",
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Nimbus Cloak",
+         "Celerity"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Health Scaling",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Thresh",
+       "wr_vs": 53.36,
+       "items": [
+        "Solstice Sleigh",
+        "Ionian Boots of Lucidity",
+        "Locket of the Iron Solari"
+       ],
+       "tip": "Flay her out of bubble range and pick her off.",
+       "runes": {
+        "primary": "Resolve",
+        "keystone": "Aftershock",
+        "minors": [
+         "Font of Life",
+         "Bone Plating",
+         "Unflinching"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Janna",
+     "wr": 52.58,
+     "pr": 7.81,
+     "tier": "S",
+     "how": "Bait her Q or R first, then chain CC so she can't knock you away.",
+     "counters": [
+      {
+       "name": "Thresh",
+       "wr_vs": 52.94,
+       "items": [
+        "Solstice Sleigh",
+        "Ionian Boots of Lucidity",
+        "Locket of the Iron Solari"
+       ],
+       "tip": "Fake an engage to bait the tornado, then hook.",
+       "runes": {
+        "primary": "Resolve",
+        "keystone": "Aftershock",
+        "minors": [
+         "Font of Life",
+         "Bone Plating",
+         "Unflinching"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Blitzcrank",
+       "wr_vs": 51.82,
+       "items": [
+        "Bloodsong",
+        "Boots of Swiftness",
+        "Locket of the Iron Solari"
+       ],
+       "tip": "Grab her from fog of war; she has no dash.",
+       "runes": {
+        "primary": "Inspiration",
+        "keystone": "Glacial Augment",
+        "minors": [
+         "Hextech Flashtraption",
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "secondary": "Sorcery",
+        "sec": [
+         "Nimbus Cloak",
+         "Celerity"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Health Scaling",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Lulu",
+       "wr_vs": 51.64,
+       "items": [
+        "Dream Maker",
+        "Ardent Censer",
+        "Ionian Boots of Lucidity"
+       ],
+       "tip": "Out-sustain her poke and polymorph her before she ults.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Summon Aery",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Bone Plating",
+         "Revitalize"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Leona",
+     "wr": 53.72,
+     "pr": 7.53,
+     "tier": "A+",
+     "how": "Stay out of E range, keep a spell for her engage, and poke while she waits.",
+     "counters": [
+      {
+       "name": "Morgana",
+       "wr_vs": 53.33,
+       "items": [
+        "Zaz'Zak's Realmspike",
+        "Liandry's Torment",
+        "Sorcerer's Shoes"
+       ],
+       "tip": "Save Black Shield for her engage; her whole combo does nothing.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Arcane Comet",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Scorch"
+        ],
+        "secondary": "Domination",
+        "sec": [
+         "Cheap Shot",
+         "Ultimate Hunter"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Zilean",
+       "wr_vs": 53.13,
+       "items": [
+        "Solstice Sleigh",
+        "Ionian Boots of Lucidity",
+        "Bandlepipes"
+       ],
+       "tip": "Slow her engage, bomb-stun to peel, keep R for the dive.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Summon Aery",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Waterwalking"
+        ],
+        "secondary": "Domination",
+        "sec": [
+         "Cheap Shot",
+         "Relentless Hunter"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Sona",
+       "wr_vs": 52.64,
+       "items": [
+        "Bloodsong",
+        "Boots of Swiftness",
+        "Echoes of Helia"
+       ],
+       "tip": "Poke from max range and turn her all-in with your R.",
+       "runes": {
+        "primary": "Sorcery",
+        "keystone": "Summon Aery",
+        "minors": [
+         "Manaflow Band",
+         "Transcendence",
+         "Gathering Storm"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Conditioning",
+         "Revitalize"
+        ],
+        "shards": [
+         "Adaptive Force",
+         "Adaptive Force",
+         "Health Scaling"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "name": "Blitzcrank",
+     "wr": 53.4,
+     "pr": 6.95,
+     "tier": "S-",
+     "how": "Keep a minion between you and him, and fight back when a hook misses.",
+     "counters": [
+      {
+       "name": "Taric",
+       "wr_vs": 59.19,
+       "items": [
+        "Dream Maker",
+        "Locket of the Iron Solari",
+        "Ionian Boots of Lucidity"
+       ],
+       "tip": "When your ADC gets grabbed, stun Blitz through your tethered ally.",
+       "runes": {
+        "primary": "Inspiration",
+        "keystone": "Glacial Augment",
+        "minors": [
+         "Magical Footwear",
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "secondary": "Resolve",
+        "sec": [
+         "Conditioning",
+         "Revitalize"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Health Scaling",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Braum",
+       "wr_vs": 55.47,
+       "items": [
+        "Solstice Sleigh",
+        "Locket of the Iron Solari",
+        "Mercury's Treads"
+       ],
+       "tip": "Stand in front of your ADC and block hooks with E.",
+       "runes": {
+        "primary": "Resolve",
+        "keystone": "Guardian",
+        "minors": [
+         "Font of Life",
+         "Bone Plating",
+         "Unflinching"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Attack Speed",
+         "Health Scaling",
+         "Health Scaling"
+        ]
+       }
+      },
+      {
+       "name": "Leona",
+       "wr_vs": 53.98,
+       "items": [
+        "Solstice Sleigh",
+        "Locket of the Iron Solari",
+        "Knight's Vow"
+       ],
+       "tip": "If he pulls you, he just started your all-in.",
+       "runes": {
+        "primary": "Resolve",
+        "keystone": "Aftershock",
+        "minors": [
+         "Font of Life",
+         "Second Wind",
+         "Overgrowth"
+        ],
+        "secondary": "Inspiration",
+        "sec": [
+         "Biscuit Delivery",
+         "Cosmic Insight"
+        ],
+        "shards": [
+         "Ability Haste",
+         "Health Scaling",
+         "Health Scaling"
+        ],
+        "unsure": true
+       }
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
