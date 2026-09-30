@@ -4,7 +4,9 @@
  "updated": "2026-09-30",
  "sources": {
   "stats": "lolalytics.com (win rates, counters, items)",
-  "runes": "op.gg / mobalytics (most-played rune page)"
+  "runes": "op.gg / mobalytics (most-played rune page)",
+  "builds": "op.gg (most played build, Emerald+ 16.19)",
+  "synergy": "lolalytics (duo win rate, Emerald+ 16.19, 500+ games)"
  },
  "roles": {
   "top": {
@@ -106,7 +108,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Lethal Tempo",
+       "minors": [
+        "Absorb Life",
+        "Legend: Alacrity",
+        "Last Stand"
+       ],
+       "secondary": "Resolve",
+       "sec": [
+        "Second Wind",
+        "Overgrowth"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Blade of The Ruined King",
+       "Immortal Shieldbow",
+       "Infinity Edge"
+      ],
+      "boots": "Berserker's Greaves"
+     }
     },
     {
      "name": "Garen",
@@ -202,7 +231,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Conqueror",
+       "minors": [
+        "Triumph",
+        "Legend: Haste",
+        "Last Stand"
+       ],
+       "secondary": "Sorcery",
+       "sec": [
+        "Axiom Arcanist",
+        "Celerity"
+       ],
+       "shards": [
+        "Adaptive Force",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Stridebreaker",
+       "Phantom Dancer",
+       "Mortal Reminder"
+      ],
+      "boots": "Berserker's Greaves"
+     }
     },
     {
      "name": "Gangplank",
@@ -298,7 +354,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Sorcery",
+       "keystone": "Deathfire Touch",
+       "minors": [
+        "Nimbus Cloak",
+        "Transcendence",
+        "Scorch"
+       ],
+       "secondary": "Precision",
+       "sec": [
+        "Cut Down",
+        "Legend: Haste"
+       ],
+       "shards": [
+        "Adaptive Force",
+        "Adaptive Force",
+        "Health"
+       ]
+      },
+      "items": [
+       "Essence Reaver",
+       "The Collector",
+       "Infinity Edge"
+      ],
+      "boots": "Plated Steelcaps"
+     }
     },
     {
      "name": "Fiora",
@@ -394,7 +477,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Press the Attack",
+       "minors": [
+        "Triumph",
+        "Legend: Alacrity",
+        "Last Stand"
+       ],
+       "secondary": "Inspiration",
+       "sec": [
+        "Jack Of All Trades",
+        "Biscuit Delivery"
+       ],
+       "shards": [
+        "Adaptive Force",
+        "Adaptive Force",
+        "Health"
+       ]
+      },
+      "items": [
+       "Ravenous Hydra",
+       "Trinity Force",
+       "Death's Dance"
+      ],
+      "boots": "Plated Steelcaps"
+     }
     },
     {
      "name": "Irelia",
@@ -490,7 +600,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Conqueror",
+       "minors": [
+        "Triumph",
+        "Legend: Alacrity",
+        "Last Stand"
+       ],
+       "secondary": "Inspiration",
+       "sec": [
+        "Triple Tonic",
+        "Jack Of All Trades"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health"
+       ]
+      },
+      "items": [
+       "Blade of The Ruined King",
+       "Hullbreaker",
+       "Wit's End"
+      ],
+      "boots": "Plated Steelcaps"
+     }
     },
     {
      "name": "Camille",
@@ -586,7 +723,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Resolve",
+       "keystone": "Grasp of the Undying",
+       "minors": [
+        "Shield Bash",
+        "Bone Plating",
+        "Unflinching"
+       ],
+       "secondary": "Inspiration",
+       "sec": [
+        "Magical Footwear",
+        "Biscuit Delivery"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Trinity Force",
+       "Ravenous Hydra",
+       "Death's Dance"
+      ],
+      "boots": "Plated Steelcaps"
+     }
     }
    ]
   },
@@ -690,7 +854,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Conqueror",
+       "minors": [
+        "Triumph",
+        "Legend: Alacrity",
+        "Last Stand"
+       ],
+       "secondary": "Inspiration",
+       "sec": [
+        "Magical Footwear",
+        "Cosmic Insight"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Trinity Force",
+       "Black Cleaver",
+       "Death's Dance"
+      ],
+      "boots": "Plated Steelcaps"
+     }
     },
     {
      "name": "Cho'Gath",
@@ -787,7 +978,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Domination",
+       "keystone": "Hail of Blades",
+       "minors": [
+        "Cheap Shot",
+        "Grisly Mementos",
+        "Ultimate Hunter"
+       ],
+       "secondary": "Sorcery",
+       "sec": [
+        "Axiom Arcanist",
+        "Celerity"
+       ],
+       "shards": [
+        "Adaptive Force",
+        "Move Speed",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Heartsteel",
+       "Dead Man's Plate",
+       "Force of Nature"
+      ],
+      "boots": "Boots of Swiftness"
+     }
     },
     {
      "name": "Master Yi",
@@ -883,7 +1101,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Domination",
+       "keystone": "Hail of Blades",
+       "minors": [
+        "Sudden Impact",
+        "Grisly Mementos",
+        "Treasure Hunter"
+       ],
+       "secondary": "Precision",
+       "sec": [
+        "Triumph",
+        "Legend: Alacrity"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Kraken Slayer",
+       "The Collector",
+       "Lord Dominik's Regards"
+      ],
+      "boots": "Berserker's Greaves"
+     }
     },
     {
      "name": "Nidalee",
@@ -979,7 +1224,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Domination",
+       "keystone": "Dark Harvest",
+       "minors": [
+        "Sudden Impact",
+        "Grisly Mementos",
+        "Treasure Hunter"
+       ],
+       "secondary": "Sorcery",
+       "sec": [
+        "Transcendence",
+        "Waterwalking"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Lich Bane",
+       "Hextech Rocketbelt",
+       "Zhonya's Hourglass"
+      ],
+      "boots": "Sorcerer's Shoes"
+     }
     },
     {
      "name": "Talon",
@@ -1075,7 +1347,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Fleet Footwork",
+       "minors": [
+        "Triumph",
+        "Legend: Alacrity",
+        "Coup de Grace"
+       ],
+       "secondary": "Inspiration",
+       "sec": [
+        "Magical Footwear",
+        "Cosmic Insight"
+       ],
+       "shards": [
+        "Adaptive Force",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Umbral Glaive",
+       "Bastionbreaker",
+       "Voltaic Cyclosword"
+      ],
+      "boots": "Boots of Swiftness"
+     }
     },
     {
      "name": "Lee Sin",
@@ -1172,7 +1471,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Conqueror",
+       "minors": [
+        "Triumph",
+        "Legend: Alacrity",
+        "Coup de Grace"
+       ],
+       "secondary": "Inspiration",
+       "sec": [
+        "Magical Footwear",
+        "Cosmic Insight"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Eclipse",
+       "Sundered Sky",
+       "Death's Dance"
+      ],
+      "boots": "Plated Steelcaps"
+     }
     }
    ]
   },
@@ -1276,7 +1602,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Lethal Tempo",
+       "minors": [
+        "Absorb Life",
+        "Legend: Alacrity",
+        "Last Stand"
+       ],
+       "secondary": "Resolve",
+       "sec": [
+        "Second Wind",
+        "Overgrowth"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Blade of The Ruined King",
+       "Immortal Shieldbow",
+       "Infinity Edge"
+      ],
+      "boots": "Berserker's Greaves"
+     }
     },
     {
      "name": "Ahri",
@@ -1374,7 +1727,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Domination",
+       "keystone": "Electrocute",
+       "minors": [
+        "Taste of Blood",
+        "Grisly Mementos",
+        "Ultimate Hunter"
+       ],
+       "secondary": "Sorcery",
+       "sec": [
+        "Manaflow Band",
+        "Transcendence"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Malignance",
+       "Shadowflame",
+       "Zhonya's Hourglass"
+      ],
+      "boots": "Sorcerer's Shoes"
+     }
     },
     {
      "name": "Xerath",
@@ -1471,7 +1851,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Sorcery",
+       "keystone": "Arcane Comet",
+       "minors": [
+        "Manaflow Band",
+        "Transcendence",
+        "Scorch"
+       ],
+       "secondary": "Precision",
+       "sec": [
+        "Presence of Mind",
+        "Coup de Grace"
+       ],
+       "shards": [
+        "Adaptive Force",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Luden's Companion",
+       "Shadowflame",
+       "Rabadon's Deathcap"
+      ],
+      "boots": "Sorcerer's Shoes"
+     }
     },
     {
      "name": "Yasuo",
@@ -1568,7 +1975,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Lethal Tempo",
+       "minors": [
+        "Absorb Life",
+        "Legend: Alacrity",
+        "Last Stand"
+       ],
+       "secondary": "Resolve",
+       "sec": [
+        "Second Wind",
+        "Overgrowth"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Immortal Shieldbow",
+       "Infinity Edge",
+       "Death's Dance"
+      ],
+      "boots": "Berserker's Greaves"
+     }
     },
     {
      "name": "Viktor",
@@ -1665,7 +2099,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Sorcery",
+       "keystone": "Deathfire Touch",
+       "minors": [
+        "Manaflow Band",
+        "Transcendence",
+        "Scorch"
+       ],
+       "secondary": "Resolve",
+       "sec": [
+        "Shield Bash",
+        "Bone Plating"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Blackfire Torch",
+       "Hextech Rocketbelt",
+       "Zhonya's Hourglass"
+      ],
+      "boots": "Sorcerer's Shoes"
+     }
     },
     {
      "name": "Katarina",
@@ -1763,7 +2224,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Domination",
+       "keystone": "Electrocute",
+       "minors": [
+        "Sudden Impact",
+        "Grisly Mementos",
+        "Relentless Hunter"
+       ],
+       "secondary": "Precision",
+       "sec": [
+        "Triumph",
+        "Coup de Grace"
+       ],
+       "shards": [
+        "Adaptive Force",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Kraken Slayer",
+       "Blade of The Ruined King",
+       "Terminus"
+      ],
+      "boots": "Sorcerer's Shoes"
+     }
     }
    ]
   },
@@ -1869,7 +2357,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Lethal Tempo",
+       "minors": [
+        "Presence of Mind",
+        "Legend: Bloodline",
+        "Cut Down"
+       ],
+       "secondary": "Inspiration",
+       "sec": [
+        "Cash Back",
+        "Triple Tonic"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health"
+       ]
+      },
+      "items": [
+       "Hexoptics C44",
+       "Runaan's Hurricane",
+       "Infinity Edge"
+      ],
+      "boots": "Berserker's Greaves"
+     }
     },
     {
      "name": "Tristana",
@@ -1967,7 +2482,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Lethal Tempo",
+       "minors": [
+        "Triumph",
+        "Legend: Bloodline",
+        "Cut Down"
+       ],
+       "secondary": "Inspiration",
+       "sec": [
+        "Cash Back",
+        "Triple Tonic"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health"
+       ]
+      },
+      "items": [
+       "Yun Tal Wildarrows",
+       "Infinity Edge",
+       "Navori Flickerblade"
+      ],
+      "boots": "Berserker's Greaves"
+     }
     },
     {
      "name": "Yunara",
@@ -2066,7 +2608,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Lethal Tempo",
+       "minors": [
+        "Triumph",
+        "Legend: Bloodline",
+        "Cut Down"
+       ],
+       "secondary": "Inspiration",
+       "sec": [
+        "Cash Back",
+        "Triple Tonic"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health"
+       ]
+      },
+      "items": [
+       "Kraken Slayer",
+       "Runaan's Hurricane",
+       "Infinity Edge"
+      ],
+      "boots": "Gluttonous Greaves"
+     }
     },
     {
      "name": "Kai'Sa",
@@ -2165,7 +2734,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Lethal Tempo",
+       "minors": [
+        "Presence of Mind",
+        "Legend: Bloodline",
+        "Coup de Grace"
+       ],
+       "secondary": "Inspiration",
+       "sec": [
+        "Magical Footwear",
+        "Biscuit Delivery"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Kraken Slayer",
+       "Guinsoo's Rageblade",
+       "Terminus"
+      ],
+      "boots": "Berserker's Greaves"
+     }
     },
     {
      "name": "Jhin",
@@ -2264,7 +2860,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Fleet Footwork",
+       "minors": [
+        "Presence of Mind",
+        "Legend: Bloodline",
+        "Coup de Grace"
+       ],
+       "secondary": "Sorcery",
+       "sec": [
+        "Celerity",
+        "Gathering Storm"
+       ],
+       "shards": [
+        "Adaptive Force",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Hubris",
+       "The Collector",
+       "Infinity Edge"
+      ],
+      "boots": "Boots of Swiftness"
+     }
     },
     {
      "name": "Caitlyn",
@@ -2362,7 +2985,34 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Precision",
+       "keystone": "Lethal Tempo",
+       "minors": [
+        "Presence of Mind",
+        "Legend: Bloodline",
+        "Coup de Grace"
+       ],
+       "secondary": "Sorcery",
+       "sec": [
+        "Absolute Focus",
+        "Gathering Storm"
+       ],
+       "shards": [
+        "Attack Speed",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Hexoptics C44",
+       "Infinity Edge",
+       "Rapid Firecannon"
+      ],
+      "boots": "Berserker's Greaves"
+     }
     }
    ]
   },
@@ -2465,7 +3115,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Resolve",
+       "keystone": "Aftershock",
+       "minors": [
+        "Font of Life",
+        "Bone Plating",
+        "Unflinching"
+       ],
+       "secondary": "Inspiration",
+       "sec": [
+        "Biscuit Delivery",
+        "Cosmic Insight"
+       ],
+       "shards": [
+        "Adaptive Force",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Solstice Sleigh",
+       "Locket of the Iron Solari",
+       "Knight's Vow"
+      ],
+      "boots": "Boots of Swiftness"
+     }
     },
     {
      "name": "Lulu",
@@ -2562,7 +3239,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Sorcery",
+       "keystone": "Summon Aery",
+       "minors": [
+        "Manaflow Band",
+        "Transcendence",
+        "Scorch"
+       ],
+       "secondary": "Resolve",
+       "sec": [
+        "Bone Plating",
+        "Revitalize"
+       ],
+       "shards": [
+        "Ability Haste",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Dream Maker",
+       "Ardent Censer",
+       "Moonstone Renewer"
+      ],
+      "boots": "Ionian Boots of Lucidity"
+     }
     },
     {
      "name": "Nami",
@@ -2658,7 +3362,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Sorcery",
+       "keystone": "Summon Aery",
+       "minors": [
+        "Manaflow Band",
+        "Transcendence",
+        "Scorch"
+       ],
+       "secondary": "Resolve",
+       "sec": [
+        "Bone Plating",
+        "Revitalize"
+       ],
+       "shards": [
+        "Adaptive Force",
+        "Adaptive Force",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Dream Maker",
+       "Echoes of Helia",
+       "Moonstone Renewer"
+      ],
+      "boots": "Ionian Boots of Lucidity"
+     }
     },
     {
      "name": "Janna",
@@ -2754,7 +3485,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Sorcery",
+       "keystone": "Summon Aery",
+       "minors": [
+        "Manaflow Band",
+        "Celerity",
+        "Gathering Storm"
+       ],
+       "secondary": "Resolve",
+       "sec": [
+        "Font of Life",
+        "Revitalize"
+       ],
+       "shards": [
+        "Adaptive Force",
+        "Move Speed",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Dream Maker",
+       "Moonstone Renewer",
+       "Redemption"
+      ],
+      "boots": "Boots of Swiftness"
+     }
     },
     {
      "name": "Leona",
@@ -2850,7 +3608,34 @@
         ]
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Resolve",
+       "keystone": "Aftershock",
+       "minors": [
+        "Font of Life",
+        "Second Wind",
+        "Overgrowth"
+       ],
+       "secondary": "Precision",
+       "sec": [
+        "Triumph",
+        "Legend: Haste"
+       ],
+       "shards": [
+        "Ability Haste",
+        "Health Scaling",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Celestial Opposition",
+       "Locket of the Iron Solari",
+       "Knight's Vow"
+      ],
+      "boots": "Plated Steelcaps"
+     }
     },
     {
      "name": "Blitzcrank",
@@ -2947,7 +3732,280 @@
         "unsure": true
        }
       }
-     ]
+     ],
+     "build": {
+      "runes": {
+       "primary": "Inspiration",
+       "keystone": "Glacial Augment",
+       "minors": [
+        "Hextech Flashtraption",
+        "Biscuit Delivery",
+        "Cosmic Insight"
+       ],
+       "secondary": "Sorcery",
+       "sec": [
+        "Nimbus Cloak",
+        "Celerity"
+       ],
+       "shards": [
+        "Ability Haste",
+        "Health Scaling",
+        "Health Scaling"
+       ]
+      },
+      "items": [
+       "Celestial Opposition",
+       "Locket of the Iron Solari",
+       "Zeke's Convergence"
+      ],
+      "boots": "Boots of Swiftness"
+     }
+    }
+   ]
+  }
+ },
+ "synergy": {
+  "adc": {
+   "Jinx": [
+    {
+     "name": "Braum",
+     "wr": 56.99,
+     "games": 8843,
+     "why": "Braum's shield covers Jinx while she ramps up, and her autos stack his stun fast."
+    },
+    {
+     "name": "Thresh",
+     "wr": 56.94,
+     "games": 26768,
+     "why": "Thresh sets up picks that Jinx turns into resets, and his lantern keeps her safe."
+    },
+    {
+     "name": "Leona",
+     "wr": 56.36,
+     "games": 7947,
+     "why": "Leona locks targets down long enough for Jinx's rockets to finish them."
+    }
+   ],
+   "Tristana": [
+    {
+     "name": "Soraka",
+     "wr": 57.57,
+     "games": 3420,
+     "why": "Soraka's heals let Tristana trade hard and jump in for all-ins."
+    },
+    {
+     "name": "Braum",
+     "wr": 55.82,
+     "games": 4414,
+     "why": "Tristana's fast attacks stack Braum's passive, so short trades end in a stun."
+    },
+    {
+     "name": "Blitzcrank",
+     "wr": 55.24,
+     "games": 6705,
+     "why": "A landed hook plus Tristana's jump and bomb is an instant kill threat."
+    }
+   ],
+   "Yunara": [
+    {
+     "name": "Braum",
+     "wr": 58.35,
+     "games": 9552,
+     "why": "Yunara's rapid attacks trigger Braum's stun, and his shield covers her in long fights."
+    },
+    {
+     "name": "Thresh",
+     "wr": 54.67,
+     "games": 14207,
+     "why": "Thresh's picks and lantern saves fit Yunara's sustained damage."
+    },
+    {
+     "name": "Blitzcrank",
+     "wr": 54.58,
+     "games": 7376,
+     "why": "A hook drags a target into Yunara's damage; one grab often means a kill."
+    }
+   ],
+   "Kai'Sa": [
+    {
+     "name": "Vel'Koz",
+     "wr": 54.2,
+     "games": 2524,
+     "why": "Vel'Koz's poke stacks Kai'Sa's plasma from range and sets up her ult."
+    },
+    {
+     "name": "Blitzcrank",
+     "wr": 53.63,
+     "games": 15025,
+     "why": "A hooked target is an easy isolated burst and ult for Kai'Sa."
+    },
+    {
+     "name": "Leona",
+     "wr": 53.63,
+     "games": 13256,
+     "why": "Leona's engage gives Kai'Sa a locked-down target to dive with her ult."
+    }
+   ],
+   "Jhin": [
+    {
+     "name": "Senna",
+     "wr": 54.65,
+     "games": 8245,
+     "why": "Senna matches Jhin's range, and her root chains straight into his W."
+    },
+    {
+     "name": "Zyra",
+     "wr": 53.62,
+     "games": 6014,
+     "why": "Zyra's root holds enemies still for Jhin's W and fourth shot."
+    },
+    {
+     "name": "Vel'Koz",
+     "wr": 53.51,
+     "games": 6572,
+     "why": "Two long-range poke threats win lane, and Vel'Koz's stun sets up Jhin's root."
+    }
+   ],
+   "Caitlyn": [
+    {
+     "name": "Thresh",
+     "wr": 53.65,
+     "games": 15616,
+     "why": "Thresh's hook and flay hold targets in Caitlyn's traps for free headshots."
+    },
+    {
+     "name": "Taric",
+     "wr": 53.29,
+     "games": 974,
+     "why": "Taric's stun follows Caitlyn's net, and his ult wins the all-ins she can't."
+    },
+    {
+     "name": "Morgana",
+     "wr": 53.08,
+     "games": 12004,
+     "why": "Morgana's long root feeds Caitlyn free traps and headshots."
+    }
+   ]
+  },
+  "support": {
+   "Thresh": [
+    {
+     "name": "Nilah",
+     "wr": 57.76,
+     "games": 1070,
+     "why": "Thresh pulls enemies into Nilah's short-range burst, and his lantern gets her out."
+    },
+    {
+     "name": "Jinx",
+     "wr": 56.73,
+     "games": 26248,
+     "why": "Thresh sets up picks that Jinx turns into resets, and his lantern keeps her safe."
+    },
+    {
+     "name": "Xayah",
+     "wr": 56.61,
+     "games": 5223,
+     "why": "Thresh's hook and flay line enemies up for Xayah's feather root."
+    }
+   ],
+   "Lulu": [
+    {
+     "name": "Nilah",
+     "wr": 55.15,
+     "games": 689,
+     "why": "Lulu's shields and speed get Nilah onto targets, and Nilah shares shields back."
+    },
+    {
+     "name": "Twitch",
+     "wr": 54.62,
+     "games": 12649,
+     "why": "Lulu's buffs make Twitch's stealth ambushes deadly and keep him alive."
+    },
+    {
+     "name": "Jinx",
+     "wr": 54.54,
+     "games": 32928,
+     "why": "Lulu's attack speed, shields and ult let Jinx hypercarry fights."
+    }
+   ],
+   "Nami": [
+    {
+     "name": "Nilah",
+     "wr": 55.68,
+     "games": 634,
+     "why": "Nami's empowered attacks and heals boost Nilah's all-ins."
+    },
+    {
+     "name": "Ashe",
+     "wr": 54.88,
+     "games": 2795,
+     "why": "Nami's bubble and Ashe's arrow chain into long lock-downs."
+    },
+    {
+     "name": "Tristana",
+     "wr": 54.55,
+     "games": 5672,
+     "why": "Nami's E buffs Tristana's fast attacks and her aggressive jumps."
+    }
+   ],
+   "Janna": [
+    {
+     "name": "Jinx",
+     "wr": 55.48,
+     "games": 10602,
+     "why": "Janna's disengage and shields keep Jinx alive until her rockets take over."
+    },
+    {
+     "name": "Kog'Maw",
+     "wr": 55.23,
+     "games": 1110,
+     "why": "Janna peels divers off Kog'Maw so he can shred from safety."
+    },
+    {
+     "name": "Tristana",
+     "wr": 54.3,
+     "games": 5409,
+     "why": "Janna's shield boosts Tristana's damage, and her tornado covers a risky jump."
+    }
+   ],
+   "Leona": [
+    {
+     "name": "Zeri",
+     "wr": 56.85,
+     "games": 1481,
+     "why": "Leona locks targets down and Zeri's mobility follows every engage."
+    },
+    {
+     "name": "Xayah",
+     "wr": 56.27,
+     "games": 2433,
+     "why": "Leona holds enemies still for Xayah's feathers to root and shred."
+    },
+    {
+     "name": "Nilah",
+     "wr": 56.24,
+     "games": 617,
+     "why": "Leona brings enemies into Nilah's short range for explosive all-ins."
+    }
+   ],
+   "Blitzcrank": [
+    {
+     "name": "Xayah",
+     "wr": 57.19,
+     "games": 2621,
+     "why": "A hooked target lands in Xayah's feathers for an instant root and kill."
+    },
+    {
+     "name": "Jinx",
+     "wr": 55.71,
+     "games": 7964,
+     "why": "Blitzcrank's hook feeds Jinx kills, which trigger her resets."
+    },
+    {
+     "name": "Sivir",
+     "wr": 55.62,
+     "games": 1638,
+     "why": "Sivir's ult speeds up Blitzcrank's hunt, and her waveclear frees him to roam."
     }
    ]
   }
