@@ -119,6 +119,27 @@ main.wrap{padding-block:1.6rem 3rem;display:flex;flex-direction:column;gap:1.4re
 @media (max-width:1100px) and (min-width:761px){.board{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:760px){.tabs{display:flex}.board{grid-template-columns:1fr}.col{display:none}.col.show{display:flex}}
 
+/* WHY CARDS */
+.why{display:flex;flex-direction:column;gap:.9rem;scroll-margin-top:5rem}
+.why-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem}
+.why-h h2{font-size:clamp(1.3rem,2.2vw,2rem)}
+.why-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.8rem}
+@media (max-width:1100px){.why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.why-grid{grid-template-columns:1fr}}
+.wc{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:1rem;display:flex;flex-direction:column;gap:.55rem;position:relative}
+.wc.me{border-color:var(--accent)}
+.wc .num{font:400 2.4rem/1 var(--display);color:var(--blue)}
+.wc.me .num{color:var(--accent)}
+.wc .role{display:flex;align-items:center;gap:.45rem;font:700 .74rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.wc .role svg{width:1.1rem;height:1.1rem}
+.wc h3{font-size:1.05rem;line-height:1.15}
+.wc p{color:var(--muted);font-size:.9rem}
+.wc .fact{margin-top:auto;font:500 .76rem/1.35 var(--mono);color:var(--fg);border-top:1px solid var(--line);padding-top:.55rem}
+.wc .fact b{color:var(--good)}
+.why-foot{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+@media (max-width:800px){.why-foot{grid-template-columns:1fr}}
+.orderbar button.linkish{margin-left:auto;background:none;border:0;color:var(--blue);font:700 .75rem/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;text-decoration:underline;padding:0}
+
 /* COUNTERS */
 .vs{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.6rem 1.2rem;align-items:center}
 @media (max-width:760px){.vs{grid-template-columns:auto minmax(0,1fr)}.vs .switch{grid-column:1/-1}}
@@ -218,6 +239,32 @@ var ROLE_UI={
   adc:{slot:"1-2",short:"Pick early",timing:"ADC picks first or second. ADC counters barely move win rates, so lock early and let support build around you.",hint:"Counters barely exist for ADCs this patch. Lock early."},
   support:{slot:"3",short:"Pick 3rd",timing:"Support picks third: after your ADC for synergy, and support counters really matter.",hint:"Pick after your ADC. Support counters swing games."}
 };
+var WHY=[
+  {k:"jungle",n:"1-2",t:"Nobody can counter you",p:"Jungle has no lane opponent. You win through pathing, farm and ganks, so the enemy pick barely matters. Lock your comfort early and give the team a direction to draft around.",f:"Matchup impact: <b>lowest</b> of all roles"},
+  {k:"adc",n:"1-2",t:"ADC counters barely exist",p:"Bot lane is 2v2 and decided by your support and jungler far more than by the enemy ADC. An early ADC pick costs nothing and lets your support build the lane around you.",f:"Best ADC counters win only <b>50–53%</b>. Nobody beats Jinx above 50%."},
+  {k:"support",n:"3",t:"Pick for your ADC and against theirs",p:"Wait until your ADC is locked, then pick for synergy. Support counters really swing lanes, so seeing more of the enemy draft pays off.",f:"Taric beats Blitzcrank <b>~59%</b>, Braum beats Blitzcrank <b>~55%</b>."},
+  {k:"mid",n:"4",t:"Big swings, but you roam",p:"Mid matchups swing hard, so try to see the enemy mid first. But mid roams and fights all over the map, so the lane alone decides less than top lane.",f:"Mel beats Xerath <b>~63%</b>, Ryze beats Yasuo <b>~59%</b>."},
+  {k:"top",n:"5",t:"The island gets the last word",p:"Top is 15 minutes of 1v1 with little help from the team. A bad matchup hurts most here, so top gets last pick to counter the enemy top or safely go comfort.",f:"Heimerdinger beats Fiora <b>~58%</b>, Warwick beats Irelia <b>~59%</b>."}
+];
+function whySection(mine){
+  var sec=el("section","why");sec.id="why";
+  var h=el("div","why-h");h.appendChild(el("h2",null,"Why this pick order?"));h.appendChild(el("span","muted small","Blind-safe roles first, counter-hungry roles last. Numbers from patch "+(DATA?DATA.patch:"")+", Emerald+."));sec.appendChild(h);
+  var g=el("div","why-grid");
+  WHY.forEach(function(w){
+    var c=el("article","wc"+(w.k===mine?" me":""));
+    c.appendChild(el("span","num",w.n));
+    var r=el("span","role");r.insertAdjacentHTML("beforeend",ROLE_ICON[w.k]);r.append(DATA.roles[w.k].label+(w.k===mine?" · you":""));c.appendChild(r);
+    c.appendChild(el("h3",null,w.t));c.appendChild(el("p",null,w.p));
+    var f=el("p","fact");f.innerHTML=w.f;c.appendChild(f);
+    g.appendChild(c);
+  });
+  sec.appendChild(g);
+  var ft=el("div","why-foot");
+  var a=el("div","callout");a.appendChild(el("h2",null,"Your pick slot is random"));a.appendChild(el("p","muted","The game hands out pick positions inside your team at random, not by role. If your slot doesn't match this order, ask for a swap right away, not with 3 seconds left."));ft.appendChild(a);
+  var b=el("div","callout");b.appendChild(el("h2",null,"Comfort beats counter"));b.appendChild(el("p","muted","A champion you actually play beats a counter you've played twice. If your main isn't on the board, play your main. Red side's last pick is the only guaranteed counterpick in the game anyway."));ft.appendChild(b);
+  sec.appendChild(ft);
+  return sec;
+}
 var ROLE_ICON={
   top:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 28V4h24"/><path d="M4 4l10 10"/><rect x="16" y="16" width="12" height="12" rx="1"/></svg>',
   jungle:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 3c-4 6-9 9-9 16a9 9 0 0 0 18 0c0-7-5-10-9-16z"/><path d="M16 12v17"/></svg>',
@@ -309,7 +356,7 @@ function vHome(app,r){
   var ob=el("div","orderbar");ob.appendChild(el("span","lbl","Team pick order"));
   var ol=el("ol");PICK.forEach(function(x){var li=el("li",x[0]===saved?"me":null);li.appendChild(el("b",null,x[2]));li.append(x[1]);ol.appendChild(li);});
   ob.appendChild(ol);ob.appendChild(el("span","muted small","Blind-safe roles first, counter-hungry roles last."));
-  ob.appendChild(link("Why? →","#/guide"));app.appendChild(ob);
+  var wb=el("button","linkish","Why this order? ↓");wb.type="button";wb.addEventListener("click",function(){var t=document.getElementById("why");if(t)t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});});ob.appendChild(wb);app.appendChild(ob);
 
   var tabs=el("div","tabs");tabs.setAttribute("role","tablist");
   mobileRole=mobileRole||saved||"top";
@@ -334,6 +381,7 @@ function vHome(app,r){
   });
   app.appendChild(tabs);app.appendChild(board);
   var p=el("p","muted small");p.append("Enemy not on the board? Type any name in the search, or check the ");p.appendChild(link("live tier lists","https://lolalytics.com/lol/tierlist/",true));p.append(".");app.appendChild(p);
+  app.appendChild(whySection(saved));
 }
 
 /* ---------- COUNTERS ---------- */
@@ -363,7 +411,7 @@ function vVs(app,r){
   top.appendChild(sw);app.appendChild(top);
 
   var s2=el("div","strip2");
-  var n1=el("div","note timing");n1.appendChild(el("span","lbl","When you pick"));n1.appendChild(el("p",null,U.timing));s2.appendChild(n1);
+  var n1=el("div","note timing");n1.appendChild(el("span","lbl","When you pick"));var tp=el("p",null,U.timing+" ");tp.appendChild(link("Why?","#/guide"));n1.appendChild(tp);s2.appendChild(n1);
   var n2=el("div","note");n2.appendChild(el("span","lbl","Playing against "+ch.name));n2.appendChild(el("p",null,ch.how));s2.appendChild(n2);
   app.appendChild(s2);
   if(r.role==="adc"&&ch.name==="Jinx")app.appendChild(el("p","warn","No ADC really counters Jinx this patch. These are the least bad options. Honestly: ban her or play your main."));
@@ -399,10 +447,7 @@ function vGuide(app){
   var w=el("div","narrow");
   w.appendChild(el("p","eyebrow","The long version"));
   var h=el("h1");h.innerHTML="Why this pick order? <span>Read it once, never argue again.</span>";w.appendChild(h);
-  var ob=el("div","orderbar");ob.appendChild(el("span","lbl","Team pick order"));var ol=el("ol");PICK.forEach(function(x){var li=el("li");li.appendChild(el("b",null,x[2]));li.append(x[1]);ol.appendChild(li);});ob.appendChild(ol);w.appendChild(ob);
-  [["How the lobby works","Blue side picks first. Red side gets pick 10, the only guaranteed counterpick in the game. Inside your team the pick order is random and has nothing to do with your role. That's why swaps exist."],
-   ["Blind-safe first, counter-hungry last","Jungle has no lane to lose. ADC matchups barely move win rates this patch. Supports pick after their ADC for synergy, and support counters actually swing games. Mid matchups swing harder still, and top is a 15-minute 1v1 island where a bad matchup hurts most. So top picks last."],
-   ["Comfort beats counter","A champion you actually play beats a counter you've played twice. Counters matter most in top and mid, somewhat for support, and barely for ADC. If your main isn't on the board, play your main."]].forEach(function(x){var c=el("div","callout");c.appendChild(el("h2",null,x[0]));c.appendChild(el("p","muted",x[1]));w.appendChild(c);});
+  app.appendChild(w);app.appendChild(whySection(store("lio-role")));w=el("div","narrow");
   w.appendChild(el("h2",null,"Lobby etiquette for the chronically online"));
   var ul=el("ul","rules");
   [["do","Hover your champ early.","Your team can plan around it."],["do","Ask for a swap right away.","The timer does not care about your feelings."],["","Don't blind-lock a counterpick.","A counter picked before the enemy shows their champ is just a random champ."],["","Don't flame first pick.","Someone has to go first."],["","Don't write essays.","In ranked you're literally named Krug. Nobody will remember your take."]].forEach(function(x){var li=el("li",x[0]||null);var d=el("div");d.appendChild(el("b",null,x[1]+" "));d.appendChild(el("span",null,x[2]));li.appendChild(d);ul.appendChild(li);});
