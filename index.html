@@ -77,7 +77,12 @@ section{display:flex;flex-direction:column;gap:1rem}
 .wc.me{border-color:var(--accent)}
 .wc .num{font:400 2.2rem/1 var(--display);color:var(--blue)}
 .wc.me .num{color:var(--accent)}
-.wc .role{display:flex;align-items:center;gap:.45rem;font:700 .74rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.wrole{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;background:var(--panel2);border:2px solid var(--line);border-radius:8px;padding:1.3rem .5rem 1rem;text-decoration:none;color:var(--muted);font:700 .78rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;transition:border-color .15s,color .15s}
+.wrole .ricon{width:3.2rem;height:3.2rem}
+.wrole:hover,.wrole:focus-visible{border-color:var(--accent);color:var(--fg)}
+.wrole .go{font-size:.64rem;letter-spacing:.08em;color:var(--accent);opacity:0;transition:opacity .15s}
+.wrole:hover .go,.wrole:focus-visible .go{opacity:1}
+@media (hover:none){.wrole .go{opacity:1}}
 .wc h3{font-size:1rem;line-height:1.15}
 .wc p{color:var(--muted);font-size:.86rem;line-height:1.45}
 .wc .fact{margin-top:auto;font:500 .72rem/1.35 var(--mono);color:var(--fg);border-top:1px solid var(--line);padding-top:.5rem}
@@ -330,7 +335,9 @@ function whyCards(mine){
   WHY.forEach(function(w){
     var c=el("article","wc"+(w.k===mine?" me":""));
     c.appendChild(el("span","num",SLOT[w.k]));
-    var r=el("span","role");r.appendChild(roleIcon(w.k));r.append(label(w.k)+(w.k===mine?" · you":""));c.appendChild(r);
+    var r=el("a","wrole");r.href="#/"+w.k;r.setAttribute("aria-label","Open "+label(w.k));
+    r.addEventListener("click",function(){store("lio-role",w.k);});
+    r.appendChild(roleIcon(w.k));r.appendChild(el("span",null,label(w.k)+(w.k===mine?" · you":"")));r.appendChild(el("span","go","Open →"));c.appendChild(r);
     c.appendChild(el("h3",null,w.t));c.appendChild(el("p",null,w.p));
     var f=el("p","fact");f.innerHTML=w.f;c.appendChild(f);g.appendChild(c);
   });
