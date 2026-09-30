@@ -322,7 +322,7 @@ function vMeta(app,r){
     var a=el("a","mc");a.href="#/"+r.role+"/"+norm(ch.name);
     a.appendChild(icon("champ",ch.name));
     var mid=el("div");mid.style.minWidth="0";mid.appendChild(el("div","nm",ch.name));
-    var st=el("div","st");st.innerHTML="<b>"+ch.wr.toFixed(1)+"%</b> win · "+ch.pr.toFixed(1)+"% pick";mid.appendChild(st);a.appendChild(mid);
+    var st=el("div","st");st.innerHTML="<b>"+ch.wr.toFixed(1)+"%</b> win rate<br>"+ch.pr.toFixed(1)+"% pick rate";mid.appendChild(st);a.appendChild(mid);
     a.appendChild(el("span","tier"+(ch.tier.charAt(0)==="S"?" s":""),ch.tier));
     g.appendChild(a);
   });
