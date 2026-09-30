@@ -2,7 +2,7 @@
 
 League of Legends champ-select helper: pick order by role, current meta, counterpicks with full rune pages and core items.
 
-Live: https://nick24051998.github.io/lock-in/
+Live: https://lock-in-order.pages.dev/
 
 - `index.html` – the site (no build step). Item, rune and champion icons load live from Riot Data Dragon, so they always match the current patch.
 - `data.json` – win rates, counters, rune pages and items for the current patch. Updated after each patch.
