@@ -4,25 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Lock In Order</title>
-<meta name="description" content="League of Legends champ select helper: pick order by role, current meta, counterpicks with rune pages and builds. Then stfu and lock in.">
+<meta name="description" content="Champ select in 2 clicks: pick your lane opponent, get the best counterpick with full rune page and core build. Then stfu and lock in.">
+<link rel="preload" href="data.json" as="fetch" crossorigin>
+<link rel="preconnect" href="https://ddragon.leagueoflegends.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://ddragon.leagueoflegends.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Barlow:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
-/* Layout: champ-select board. Sticky top bar with 4-step progress, one screen per step, hash routes (#/top/yone). Single dark theme by design. */
+/* Layout: full-width champ-select board. Home = search + 5 role columns (1 click to counters). Counter view = 3 counters side by side. Single dark theme by design. */
 :root{
   --bg:#0f1720;--panel:#16222e;--panel2:#1c2b39;--line:#26394a;
   --fg:#e8eef2;--muted:#8fa3b3;--accent:#ff9a3c;--blue:#4fa3ff;--red:#ff5c6c;--good:#4fd18b;
   --display:"Bungee","Impact",system-ui,sans-serif;
   --body:"Barlow","Segoe UI",system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gut:clamp(16px,2.5vw,48px);
   color-scheme:dark;
 }
 *{box-sizing:border-box}
+html{font-size:clamp(15px,0.35vw + 10px,20px)}
 html,body{margin:0;background:var(--bg);color:var(--fg)}
-html{font-size:clamp(16px,0.45vw + 10px,21px)}
-body{font:400 1.05rem/1.55 var(--body);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{font:400 1rem/1.5 var(--body);padding-bottom:env(safe-area-inset-bottom,0px)}
 [hidden]{display:none!important}
 img{max-width:100%}
 a{color:var(--blue)}
@@ -30,162 +32,191 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.08;te
 p{margin:0}
 button{font:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.wrap{max-width:1680px;margin:0 auto;padding-inline:var(--gut)}
 
-.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
-.top-in{max-width:68rem;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.brand{font:400 1rem/1 var(--display);color:var(--fg);text-decoration:none;display:flex;align-items:center;gap:8px}
-.brand i{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
-.nav{margin-left:auto;display:flex;gap:14px;font:700 .78rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+/* top bar */
+.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;align-items:center;gap:1.2rem;padding-block:.7rem}
+.brand{font:400 1.05rem/1 var(--display);color:var(--fg);text-decoration:none;display:flex;align-items:center;gap:.5rem;white-space:nowrap}
+.brand i{width:.6rem;height:.6rem;border-radius:50%;background:var(--accent);display:inline-block}
+.search{position:relative;flex:1;max-width:36rem}
+.search input{width:100%;font:500 1rem/1 var(--body);color:var(--fg);background:var(--panel);border:2px solid var(--line);border-radius:6px;padding:.7rem .9rem .7rem 2.4rem}
+.search input:focus{outline:none;border-color:var(--accent)}
+.search svg{position:absolute;left:.8rem;top:50%;transform:translateY(-50%);width:1rem;height:1rem;color:var(--muted)}
+.search kbd{position:absolute;right:.7rem;top:50%;transform:translateY(-50%);font:700 .7rem/1 var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:.25rem .4rem}
+.results{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--panel);border:1px solid var(--line);border-radius:6px;list-style:none;margin:0;padding:.3rem;box-shadow:0 12px 30px rgba(0,0,0,.45);max-height:60vh;overflow:auto}
+.results a{display:flex;align-items:center;gap:.7rem;padding:.45rem .5rem;border-radius:4px;color:var(--fg);text-decoration:none}
+.results a[aria-selected="true"],.results a:hover{background:var(--panel2)}
+.results small{margin-left:auto;font:700 .7rem/1 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.nav{margin-left:auto;display:flex;gap:1.1rem;font:700 .78rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
 .nav a{color:var(--muted);text-decoration:none}
 .nav a[aria-current="page"],.nav a:hover{color:var(--accent)}
-.progress{max-width:68rem;margin:0 auto;padding:0 16px 10px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.progress a,.progress span{display:flex;flex-direction:column;gap:5px;font:700 .66rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none}
-.progress b{height:4px;border-radius:2px;background:var(--line)}
-.progress .done b{background:var(--blue)}
-.progress .now b{background:var(--accent)}
-.progress .now{color:var(--accent)}
-.progress span{opacity:.5}
+@media (max-width:640px){.top .wrap{flex-wrap:wrap}.search{order:3;flex-basis:100%;max-width:none}.search kbd{display:none}}
 
-main{max-width:68rem;margin:0 auto;padding:28px 16px 64px;display:flex;flex-direction:column;gap:28px}
-.eyebrow{font:700 .74rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.eyebrow em{font-style:normal;color:var(--accent)}
-.title{font-size:clamp(1.8rem,5.5vw,3.2rem)}
-.title span{color:var(--accent)}
-.lede{color:var(--muted);max-width:60ch;font-size:1.08rem}
+main.wrap{padding-block:1.6rem 3rem;display:flex;flex-direction:column;gap:1.4rem}
+.eyebrow{font:700 .72rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .muted{color:var(--muted)}
-.small{font-size:.9rem}
-.stack{display:flex;flex-direction:column;gap:12px}
-.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:8px;font:700 .88rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:var(--bg);border:0;border-radius:4px;padding:13px 18px;text-decoration:none}
+.small{font-size:.88rem}
+.row{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font:700 .82rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:var(--bg);border:0;border-radius:4px;padding:.8rem 1.1rem;text-decoration:none}
 .btn:hover{filter:brightness(1.1)}
 .btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-.btn.ghost:hover{border-color:var(--muted)}
-.banner{border:1px solid var(--line);border-left:4px solid var(--red);background:var(--panel);border-radius:6px;padding:12px 14px;font-size:.92rem;color:var(--muted)}
+.banner{border:1px solid var(--line);border-left:4px solid var(--red);background:var(--panel);border-radius:6px;padding:.7rem .9rem;font-size:.9rem;color:var(--muted)}
 .banner b{color:var(--fg)}
-
-/* step 1 */
-.roles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-@media (max-width:560px){.roles{grid-template-columns:repeat(2,minmax(0,1fr))}.roles a:last-child{grid-column:span 2}}
-.role{background:var(--panel);border:2px solid var(--line);border-radius:8px;padding:1.6rem .5rem;display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:var(--fg)}
-.role:hover{border-color:var(--accent);background:var(--panel2)}
-.role svg{width:2.4rem;height:2.4rem;color:var(--muted)}
-.role:hover svg{color:var(--accent)}
-.role b{font:400 1.05rem/1 var(--display)}
-.role small{font:500 .7rem/1 var(--mono);color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
-.role.saved{border-color:var(--blue)}
-
-/* step 2 */
-.strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;list-style:none;margin:0;padding:0}
-.strip li{border:1px solid var(--line);border-radius:6px;padding:12px 4px;text-align:center;display:flex;flex-direction:column;gap:5px;min-width:0}
-.strip .n{font:400 1.3rem/1 var(--display);color:var(--blue)}
-.strip .r{font:700 .72rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.strip li.me{border-color:var(--accent);background:var(--panel2)}
-.strip li.me .n,.strip li.me .r{color:var(--accent)}
-.slotcard{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:10px}
-.slotcard .big{font:400 1.5rem/1.1 var(--display)}
-.slotcard p{color:var(--muted)}
-.slotcard p b{color:var(--fg)}
-
-/* step 3 */
-.meta{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:10px}
-.mc{display:grid;grid-template-columns:3.5rem 1fr auto;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-decoration:none;color:var(--fg)}
-.mc:hover{border-color:var(--accent);background:var(--panel2)}
-.mc .nm{font-weight:700;font-size:1.05rem;min-width:0}
-.mc .st{font:500 .78rem/1.35 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
-.mc .st b{color:var(--good);font-weight:700}
-.tier{font:700 .72rem/1 var(--mono);padding:5px 7px;border-radius:3px;background:var(--line);color:var(--fg)}
-.tier.s{background:var(--accent);color:var(--bg)}
+.toast{font:500 .82rem/1 var(--mono);color:var(--muted)}
 
 /* icons */
-.ic{display:inline-grid;place-items:center;flex:none;background:var(--panel2);border:1px solid var(--line);color:var(--muted);font:700 .7rem/1 var(--mono);overflow:hidden}
+.ic{display:inline-grid;place-items:center;flex:none;background:var(--panel2);border:1px solid var(--line);color:var(--muted);font:700 .62rem/1 var(--mono);overflow:hidden}
 .ic img{width:100%;height:100%;object-fit:cover;display:block}
-.ic.champ{width:3.5rem;height:3.5rem;border-radius:6px}
-.ic.champ.lg{width:4.6rem;height:4.6rem}
+.ic.champ{width:2.6rem;height:2.6rem;border-radius:5px}
+.ic.champ.md{width:3.4rem;height:3.4rem;border-radius:6px}
+.ic.champ.lg{width:4.4rem;height:4.4rem;border-radius:8px}
+.ic.champ.sm{width:2rem;height:2rem;border-radius:4px}
 .ic.item{width:2.5rem;height:2.5rem;border-radius:4px}
-.ic.rune{width:1.9rem;height:1.9rem;border-radius:50%;background:#0b1118}
-.ic.rune.key{width:2.9rem;height:2.9rem}
-.ic.rune.tree{width:1.4rem;height:1.4rem;background:transparent;border:0}
-.ic.shard{width:1.4rem;height:1.4rem;border-radius:50%;background:#0b1118}
+.ic.rune{width:1.8rem;height:1.8rem;border-radius:50%;background:#0b1118}
+.ic.rune.key{width:3rem;height:3rem}
+.ic.rune.tree{width:1.2rem;height:1.2rem;background:transparent;border:0}
+.ic.shard{width:1.3rem;height:1.3rem;border-radius:50%;background:#0b1118}
 
-/* step 4 */
-.vs-head{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-.vs-head .t{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1}
-.howbox{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:6px}
-.counters{display:flex;flex-direction:column;gap:14px}
-.cc{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;display:grid;grid-template-columns:1fr;gap:14px}
-.cc-head{display:flex;align-items:center;gap:12px}
-.cc-head h3{font-size:1.25rem}
+/* HOME */
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:1rem 2.5rem;align-items:end}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(1.8rem,3.6vw,3.4rem)}
+.hero h1 span{color:var(--accent)}
+.promise{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
+.promise div{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.7rem .8rem;display:flex;flex-direction:column;gap:.25rem}
+.promise b{font:400 1.25rem/1 var(--display);color:var(--accent)}
+.promise span{font-size:.82rem;color:var(--muted);line-height:1.3}
+.orderbar{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.6rem .9rem;font-size:.9rem}
+.orderbar .lbl{font:700 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.orderbar ol{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0;padding:0}
+.orderbar li{font:700 .78rem/1 var(--mono);border:1px solid var(--line);border-radius:3px;padding:.35rem .5rem}
+.orderbar li b{color:var(--blue);margin-right:.35rem}
+.orderbar li.me{border-color:var(--accent);color:var(--accent)}
+.orderbar li.me b{color:var(--accent)}
+.orderbar a{margin-left:auto;font:700 .75rem/1 var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.8rem}
+.col{background:var(--panel);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;min-width:0}
+.col.mine{border-color:var(--accent)}
+.col-h{display:flex;align-items:center;gap:.6rem;padding:.8rem .9rem;border-bottom:1px solid var(--line)}
+.col-h svg{width:1.5rem;height:1.5rem;color:var(--muted);flex:none}
+.col.mine .col-h svg{color:var(--accent)}
+.col-h h2{font-size:1.05rem}
+.col-h .slot{margin-left:auto;font:700 .66rem/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:right}
+.col-h .slot b{display:block;color:var(--blue);font-size:.9rem}
+.col.mine .col-h .slot b{color:var(--accent)}
+.col ul{list-style:none;margin:0;padding:.35rem;display:flex;flex-direction:column;gap:.15rem}
+.ch{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.65rem;align-items:center;padding:.45rem .5rem;border-radius:5px;color:var(--fg);text-decoration:none}
+.ch:hover,.ch:focus-visible{background:var(--panel2)}
+.ch .nm{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ch .wr{font:700 .78rem/1 var(--mono);color:var(--good);font-variant-numeric:tabular-nums}
+.ch .go{font:700 .66rem/1 var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.ch:hover .go{color:var(--accent)}
+.col .hint{padding:.2rem .9rem .8rem;font-size:.78rem;color:var(--muted);margin-top:auto}
+.tabs{display:none;gap:.4rem;overflow-x:auto}
+.tabs button{flex:none;background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:4px;padding:.55rem .8rem;font:700 .8rem/1 var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.tabs button[aria-selected="true"]{border-color:var(--accent);color:var(--accent)}
+@media (max-width:1100px) and (min-width:761px){.board{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.tabs{display:flex}.board{grid-template-columns:1fr}.col{display:none}.col.show{display:flex}}
+
+/* COUNTERS */
+.vs{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.6rem 1.2rem;align-items:center}
+@media (max-width:760px){.vs{grid-template-columns:auto minmax(0,1fr)}.vs .switch{grid-column:1/-1}}
+.vs h1{font-size:clamp(1.6rem,3vw,2.6rem)}
+.vs .sub{display:flex;flex-wrap:wrap;gap:.3rem .9rem;font-size:.9rem;color:var(--muted);margin-top:.35rem}
+.vs .sub b{color:var(--fg)}
+.switch{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+.switch span{font:700 .66rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:.2rem}
+.switch a{display:block;border-radius:5px;outline-offset:2px}
+.switch a.cur .ic{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.strip2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.8rem}
+@media (max-width:900px){.strip2{grid-template-columns:1fr}}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.7rem .9rem;display:flex;flex-direction:column;gap:.25rem}
+.note.timing{border-left:4px solid var(--accent)}
+.note .lbl{font:700 .66rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
+@media (max-width:1100px){.cards{grid-template-columns:1fr}}
+.cc{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:1rem;display:flex;flex-direction:column;gap:.9rem;min-width:0}
+.cc.best{border-color:var(--good)}
+.cc-head{display:flex;align-items:center;gap:.7rem}
+.cc-head h3{font-size:1.2rem}
+.cc-head .rank{font:700 .64rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.25rem}
+.cc.best .rank{color:var(--good)}
 .cc-head .wr{margin-left:auto;text-align:right;font:700 1.35rem/1 var(--mono);color:var(--good);font-variant-numeric:tabular-nums}
-.cc-head .wr small{display:block;font:500 .64rem/1.4 var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-.cc-body{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:16px}
-@media (max-width:640px){.cc-body{grid-template-columns:1fr}}
-.lbl{font:700 .66rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
-.runes{display:flex;flex-direction:column;gap:10px}
-.tree{display:flex;flex-direction:column;gap:6px}
-.tree-h{display:flex;align-items:center;gap:6px;font:700 .72rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.rrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.rune-cell{display:flex;align-items:center;gap:8px;min-width:0}
-.rname{font-size:.86rem;line-height:1.2}
-.keyname{font-weight:700;font-size:1rem}
-.rlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px 10px}
-.shards{display:flex;gap:10px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
-.shards span{display:flex;align-items:center;gap:5px}
-.items{display:flex;flex-direction:column;gap:8px}
-.item-row{display:flex;align-items:center;gap:10px;font-size:.92rem}
-.item-row .num{font:700 .72rem/1 var(--mono);color:var(--muted);width:1.2em}
-.tip{color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.cc-head .wr small{display:block;font:500 .6rem/1.4 var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.sec-l{font:700 .64rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.4rem;margin-bottom:.45rem}
+.keyrow{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
+.keyrow b{font-size:1rem}
+.minors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}
+.minors.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.rn{display:flex;flex-direction:column;align-items:center;gap:.25rem;text-align:center;font-size:.72rem;line-height:1.15;color:var(--muted);min-width:0}
+.trees{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:.8rem}
+.shards{display:flex;gap:.8rem;flex-wrap:wrap;font-size:.74rem;color:var(--muted);margin-top:.55rem}
+.shards span{display:flex;align-items:center;gap:.3rem}
+.items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+.it{display:flex;flex-direction:column;align-items:center;gap:.3rem;text-align:center;font-size:.76rem;line-height:1.2;min-width:0}
+.it .n{font:700 .6rem/1 var(--mono);color:var(--muted)}
+.tip{color:var(--muted);font-size:.92rem;border-top:1px solid var(--line);padding-top:.7rem}
 .tip b{color:var(--fg)}
-.links{display:flex;flex-wrap:wrap;gap:14px;font:500 .8rem/1.2 var(--mono)}
-.unsure{font:500 .74rem/1.3 var(--mono);color:var(--accent)}
-.warn{font-size:.92rem;color:var(--muted);border-left:3px solid var(--red);padding-left:10px}
+.links{display:flex;flex-wrap:wrap;gap:.9rem;font:500 .74rem/1.2 var(--mono);margin-top:auto}
+.unsure{font:500 .7rem/1.3 var(--mono);color:var(--accent)}
+.warn{font-size:.9rem;color:var(--muted);border-left:3px solid var(--red);padding-left:.7rem}
 
-/* guide */
-.callout{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:8px}
-.rules{display:flex;flex-direction:column;gap:12px;padding:0;margin:0;list-style:none}
-.rules li{display:grid;grid-template-columns:24px 1fr;gap:10px}
+/* GUIDE / RATE */
+.narrow{max-width:62rem;display:flex;flex-direction:column;gap:1.2rem}
+.narrow h1{font-size:clamp(1.8rem,4vw,3rem)}
+.narrow h1 span{color:var(--accent)}
+.callout{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.4rem}
+.callout h2{font-size:1.2rem}
+.rules{display:flex;flex-direction:column;gap:.7rem;padding:0;margin:0;list-style:none}
+.rules li{display:grid;grid-template-columns:1.4rem 1fr;gap:.6rem}
 .rules li::before{content:"✕";color:var(--red);font-weight:700}
 .rules li.do::before{content:"✓";color:var(--good)}
 .rules span{color:var(--muted)}
-.chat{border:2px dashed var(--accent);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:12px}
-.chat code{display:block;font:500 .95rem/1.5 var(--mono);background:var(--bg);border:1px solid var(--line);padding:12px;border-radius:4px;overflow-wrap:anywhere;user-select:all}
-.toast{font:500 .85rem/1 var(--mono);color:var(--muted)}
-.stfu{text-align:center;display:flex;flex-direction:column;gap:8px;padding-top:12px}
-.stfu h2{font-size:clamp(1.8rem,8vw,3rem);color:var(--accent)}
-footer{max-width:68rem;margin:0 auto;padding:0 16px 40px;font-size:.78rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.chat{border:2px dashed var(--accent);border-radius:6px;padding:1rem;display:flex;flex-direction:column;gap:.7rem}
+.chat code{display:block;font:500 .9rem/1.5 var(--mono);background:var(--bg);border:1px solid var(--line);padding:.7rem;border-radius:4px;overflow-wrap:anywhere;user-select:all}
+.stfu{text-align:center;padding-block:.5rem}
+.stfu h2{font-size:clamp(1.6rem,4vw,2.6rem);color:var(--accent)}
+footer .wrap{padding-block:0 2.5rem;font-size:.74rem;color:var(--muted);display:flex;flex-direction:column;gap:.25rem}
 footer a{color:var(--muted)}
 </style>
 </head>
 <body>
 
 <header class="top">
-  <div class="top-in">
+  <div class="wrap">
     <a class="brand" href="#/"><i></i>Lock In Order</a>
+    <div class="search" id="searchBox">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg>
+      <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Who are you laning against? Type a champ…" aria-label="Search enemy champion" aria-controls="res" aria-expanded="false">
+      <kbd>/</kbd>
+      <ul class="results" id="res" role="listbox" hidden></ul>
+    </div>
     <nav class="nav"><a href="#/guide" id="nav-guide">Why?</a><a href="#/rate" id="nav-rate">Rate</a></nav>
   </div>
-  <div class="progress" id="progress"></div>
 </header>
 
-<main id="app" tabindex="-1"></main>
+<main class="wrap" id="app" tabindex="-1"><p class="muted">Loading…</p></main>
 
-<footer>
+<footer><div class="wrap">
   <span id="foot-data">Stats: patch 26.19, Emerald+.</span>
-  <span>Win rates, counters and items: lolalytics. Rune pages: op.gg / mobalytics (most played). Icons: Riot Data Dragon, always the live patch. Numbers can be a bit off, use the live links for the latest.</span>
+  <span>Win rates, counters and items: lolalytics. Rune pages: op.gg / mobalytics (most played). Icons: Riot Data Dragon, always the live patch.</span>
   <span>Lock In Order isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. League of Legends © Riot Games, Inc.</span>
-</footer>
+</div></footer>
 
 <script>
-/* ---------- config ---------- */
 var RATE_URL=""; // paste the Tally / Google Form link here
 var DD="https://ddragon.leagueoflegends.com";
 var CD="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/";
 var SHARD_ICON={"adaptive force":"statmodsadaptiveforceicon.png","attack speed":"statmodsattackspeedicon.png","ability haste":"statmodscdrscalingicon.png","move speed":"statmodsmovementspeedicon.png","health scaling":"statmodshealthscalingicon.png","health":"statmodshealthplusicon.png","tenacity and slow resist":"statmodstenacityicon.png"};
-var ORDER=[["jungle","JGL","1-2"],["adc","ADC","1-2"],["support","SUP","3"],["mid","MID","4"],["top","TOP","5"]];
+var ROLES_ORDER=["top","jungle","mid","adc","support"];
+var PICK=[["jungle","JGL","1-2"],["adc","ADC","1-2"],["support","SUP","3"],["mid","MID","4"],["top","TOP","5"]];
 var ROLE_UI={
-  top:{slot:"5",big:"You pick last.",why:"Top is an island: 1v1 for 15 minutes, so a bad matchup hurts most here. Wait until the enemy top is locked, then counter or go comfort.",joke:"Congrats, you get the one guaranteed moment of peace in champ select."},
-  jungle:{slot:"1-2",big:"You pick first or second.",why:"No lane means no lane counter. Lock your comfort champ early and give the team a direction to draft around.",joke:"Nobody can counter you. They can only flame you. That's different."},
-  mid:{slot:"4",big:"You pick fourth.",why:"Mid matchups swing hard (Mel beats Xerath about 63% of the time), but mid still roams and fights all over the map. Late is great. Last belongs to top.",joke:"Yes, you're the main character. No, you still don't get last pick."},
-  adc:{slot:"1-2",big:"You pick first or second.",why:"ADC counters barely exist: the best ones land around 50 to 53%, and Jinx has basically no real counter this patch. Nobody can punish your pick, so lock early and let your support build around you.",joke:"Lock in, then go get a drink. Your part is done."},
-  support:{slot:"3",big:"You pick third.",why:"Wait for your ADC, then pick for synergy. Support counters swing much harder than ADC ones (Taric beats Blitzcrank about 59%), so seeing more of the draft pays off.",joke:"You carry the team emotionally anyway. Now also strategically."}
+  top:{slot:"5",short:"Last pick",timing:"Top picks last. Wait until the enemy top is locked in, then counter or go comfort.",hint:"Island lane. Bad matchups hurt most here, so top gets last pick."},
+  jungle:{slot:"1-2",short:"Pick early",timing:"Jungle picks first or second. No lane means nobody can counter you, so lock your comfort early.",hint:"No lane opponent to lose to. Lock early and give the team a direction."},
+  mid:{slot:"4",short:"Pick 4th",timing:"Mid picks fourth. Try to see the enemy mid first; matchups swing hard here.",hint:"Big matchup swings, but you roam a lot. Late is great, last is top's."},
+  adc:{slot:"1-2",short:"Pick early",timing:"ADC picks first or second. ADC counters barely move win rates, so lock early and let support build around you.",hint:"Counters barely exist for ADCs this patch. Lock early."},
+  support:{slot:"3",short:"Pick 3rd",timing:"Support picks third: after your ADC for synergy, and support counters really matter.",hint:"Pick after your ADC. Support counters swing games."}
 };
 var ROLE_ICON={
   top:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 28V4h24"/><path d="M4 4l10 10"/><rect x="16" y="16" width="12" height="12" rx="1"/></svg>',
@@ -195,223 +226,235 @@ var ROLE_ICON={
   support:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 4l10 4v7c0 7-4.5 11-10 13C10.5 26 6 22 6 15V8z"/><path d="M16 11v10M11 16h10"/></svg>'
 };
 
-/* ---------- helpers ---------- */
 function norm(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[^a-z0-9]/g,"");}
 function lolSlug(n){var s=norm(n);return s==="renataglasc"?"renata":s;}
-function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
 function link(txt,href,ext){var a=el("a",null,txt);a.href=href;if(ext){a.target="_blank";a.rel="noopener";}return a;}
 function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
 
-/* ---------- Riot Data Dragon (live icons) ---------- */
-var DDV=null,ITEM={},CHAMP={},RUNE={},TREE={},ddReady=false;
+/* ---------- Riot Data Dragon, cached per patch ---------- */
+var DDV=null,ITEM={},CHAMP={},RUNE={},ddReady=false;
+function applyDD(m){DDV=m.v;ITEM=m.i;CHAMP=m.c;RUNE=m.r;ddReady=true;}
 function loadDD(){
+  var cached=null;try{cached=JSON.parse(store("lio-dd")||"null");}catch(e){}
+  if(cached&&cached.v)applyDD(cached);
   return fetch(DD+"/api/versions.json").then(function(r){return r.json();}).then(function(vs){
-    DDV=vs[0];
+    var v=vs[0];if(cached&&cached.v===v)return false;
     return Promise.all([
-      fetch(DD+"/cdn/"+DDV+"/data/en_US/item.json").then(function(r){return r.json();}),
-      fetch(DD+"/cdn/"+DDV+"/data/en_US/champion.json").then(function(r){return r.json();}),
-      fetch(DD+"/cdn/"+DDV+"/data/en_US/runesReforged.json").then(function(r){return r.json();})
-    ]);
-  }).then(function(res){
-    var items=res[0].data,best={};
-    Object.keys(items).forEach(function(id){
-      var o=items[id];if(!o||!o.name)return;
-      if(o.maps&&o.maps["11"]===false)return;
-      var k=norm(o.name),n=parseInt(id,10);
-      if(!(k in best)||n<best[k])best[k]=n;
+      fetch(DD+"/cdn/"+v+"/data/en_US/item.json").then(function(r){return r.json();}),
+      fetch(DD+"/cdn/"+v+"/data/en_US/champion.json").then(function(r){return r.json();}),
+      fetch(DD+"/cdn/"+v+"/data/en_US/runesReforged.json").then(function(r){return r.json();})
+    ]).then(function(res){
+      var best={},items=res[0].data;
+      Object.keys(items).forEach(function(id){var o=items[id];if(!o||!o.name)return;if(o.maps&&o.maps["11"]===false)return;var k=norm(o.name),n=+id;if(!(k in best)||n<best[k])best[k]=n;});
+      var c={};Object.values(res[1].data).forEach(function(x){c[norm(x.name)]=x.image.full;});
+      var r={};res[2].forEach(function(t){r[norm(t.name)]=t.icon;t.slots.forEach(function(s){s.runes.forEach(function(x){r[norm(x.name)]=x.icon;});});});
+      var m={v:v,i:best,c:c,r:r};applyDD(m);try{store("lio-dd",JSON.stringify(m));}catch(e){}
+      return true;
     });
-    ITEM=best;
-    Object.values(res[1].data).forEach(function(c){CHAMP[norm(c.name)]=c.image.full;});
-    res[2].forEach(function(t){TREE[norm(t.name)]=t.icon;t.slots.forEach(function(s){s.runes.forEach(function(r){RUNE[norm(r.name)]=r.icon;});});});
-    ddReady=true;
   });
 }
-function icon(kind,name,extra){
-  var box=el("span","ic "+kind+(extra?" "+extra:""));box.title=name;
+function initials(n){return String(n).replace(/[^A-Za-z ]/g,"").split(" ").filter(Boolean).map(function(w){return w[0];}).join("").slice(0,2).toUpperCase();}
+function icon(kind,name,size){
+  var box=el("span","ic "+kind+(size?" "+size:""));box.title=name;
   var k=norm(name),src=null;
   if(ddReady){
     if(kind==="champ"&&CHAMP[k])src=DD+"/cdn/"+DDV+"/img/champion/"+CHAMP[k];
     else if(kind==="item"&&ITEM[k]!=null)src=DD+"/cdn/"+DDV+"/img/item/"+ITEM[k]+".png";
-    else if(kind==="rune"&&(RUNE[k]||TREE[k]))src=DD+"/cdn/img/"+(RUNE[k]||TREE[k]);
+    else if(kind==="rune"&&RUNE[k])src=DD+"/cdn/img/"+RUNE[k];
   }
   if(kind==="shard"&&SHARD_ICON[String(name).toLowerCase()])src=CD+SHARD_ICON[String(name).toLowerCase()];
-  var fallback=function(){box.textContent=String(name).replace(/[^A-Za-z ]/g,"").split(" ").filter(Boolean).map(function(w){return w[0];}).join("").slice(0,2).toUpperCase();};
-  if(src){var img=new Image();img.alt="";img.loading="lazy";img.decoding="async";img.src=src;img.onerror=function(){fallback();};box.appendChild(img);}
-  else fallback();
+  if(src){var img=new Image();img.alt="";img.decoding="async";img.src=src;img.onerror=function(){box.textContent=initials(name);};box.appendChild(img);}
+  else box.textContent=initials(name);
   return box;
 }
 
-/* ---------- data ---------- */
-var DATA=null;
-
-/* ---------- router ---------- */
-function route(){
-  var parts=(location.hash||"#/").replace(/^#\/?/,"").split("/").filter(Boolean);
-  if(parts[0]==="guide")return {view:"guide"};
-  if(parts[0]==="rate")return {view:"rate"};
-  if(!parts.length||!DATA||!DATA.roles[parts[0]])return {view:"role"};
-  var role=parts[0];
-  if(!parts[1])return {view:"slot",role:role};
-  if(parts[1]==="meta")return {view:"meta",role:role};
-  var ch=DATA.roles[role].champs.find(function(c){return norm(c.name)===parts[1];});
-  if(!ch)return {view:"meta",role:role};
-  return {view:"vs",role:role,champ:ch};
+/* ---------- data + routing ---------- */
+var DATA=null,INDEX=[];
+function buildIndex(){
+  INDEX=[];ROLES_ORDER.forEach(function(r){DATA.roles[r].champs.forEach(function(ch){INDEX.push({role:r,ch:ch,key:norm(ch.name)});});});
 }
-function progress(r){
-  var box=document.getElementById("progress");box.textContent="";
-  var steps=[["1 Role","#/"],["2 Your slot",r.role?"#/"+r.role:null],["3 Meta",r.role?"#/"+r.role+"/meta":null],["4 Counters",r.champ?"#/"+r.role+"/"+norm(r.champ.name):null]];
-  var cur={role:0,slot:1,meta:2,vs:3}[r.view];
-  box.hidden=(cur===undefined);
-  steps.forEach(function(s,i){
-    var node=s[1]?el("a"):el("span");if(s[1])node.href=s[1];
-    if(i<cur)node.className="done";if(i===cur){node.className="now";node.setAttribute("aria-current","step");}
-    node.appendChild(el("b"));node.appendChild(document.createTextNode(s[0]));box.appendChild(node);
-  });
-  document.getElementById("nav-guide").toggleAttribute("aria-current",r.view==="guide");
-  document.getElementById("nav-rate").toggleAttribute("aria-current",r.view==="rate");
-  if(r.view==="guide")document.getElementById("nav-guide").setAttribute("aria-current","page");
-  if(r.view==="rate")document.getElementById("nav-rate").setAttribute("aria-current","page");
+function route(){
+  var p=(location.hash||"#/").replace(/^#\/?/,"").split("/").filter(Boolean);
+  if(p[0]==="guide")return {view:"guide"};
+  if(p[0]==="rate")return {view:"rate"};
+  if(DATA&&DATA.roles[p[0]]&&p[1]){
+    var ch=DATA.roles[p[0]].champs.find(function(c){return norm(c.name)===p[1];});
+    if(ch)return {view:"vs",role:p[0],champ:ch};
+  }
+  if(DATA&&DATA.roles[p[0]])return {view:"home",role:p[0]};
+  return {view:"home"};
 }
 function staleBanner(){
   if(!ddReady||!DATA)return null;
   var live=String(DDV).split(".")[1],ours=String(DATA.patch).split(".")[1];
   if(!live||live===ours)return null;
-  var b=el("div","banner");b.innerHTML="<b>New patch is live.</b> Icons are already on the new patch, but win rates and counters are still from patch "+DATA.patch+". Use the live links for fresh numbers until the next update.";
+  var b=el("div","banner");b.innerHTML="<b>New patch is live.</b> Icons are already current, but win rates are still from patch "+DATA.patch+". Use the live links for fresh numbers until the next update.";
   return b;
 }
 
-/* ---------- views ---------- */
-function vRole(app){
-  var saved=store("lio-role");
-  app.appendChild(el("p","eyebrow")).innerHTML="<em>Step 1</em> · Your role";
-  var h=el("h1","title");h.innerHTML="What are you playing? <span>Quick, the timer's running.</span>";app.appendChild(h);
-  app.appendChild(el("p","lede","Pick your role. We'll tell you when to pick, what's strong this patch, and how to beat the guy across from you. Faster than arguing in chat."));
-  var g=el("div","roles");
-  ["top","jungle","mid","adc","support"].forEach(function(k){
-    var a=el("a","role"+(k===saved?" saved":""));a.href="#/"+k;
-    a.insertAdjacentHTML("beforeend",ROLE_ICON[k]);
-    a.appendChild(el("b",null,DATA.roles[k].label));
-    a.appendChild(el("small",null,k===saved?"Your usual":"Pick "+ROLE_UI[k].slot));
-    g.appendChild(a);
+/* ---------- HOME ---------- */
+var mobileRole=null;
+function vHome(app,r){
+  var saved=r.role||store("lio-role");
+  var hero=el("section","hero");
+  var h=el("div");h.style.display="flex";h.style.flexDirection="column";h.style.gap=".6rem";
+  var h1=el("h1");h1.innerHTML="Click your lane opponent. <span>Get the counter, runes and build.</span>";h.appendChild(h1);
+  h.appendChild(el("p","muted","Made for the 30 seconds you actually have in champ select. No login, no ads, no essays."));
+  hero.appendChild(h);
+  var pr=el("div","promise");
+  [["2 clicks","from enemy to full build"],["90","counterpicks with win rates"],["Live","icons always on the current patch"]].forEach(function(x){var d=el("div");d.appendChild(el("b",null,x[0]));d.appendChild(el("span",null,x[1]));pr.appendChild(d);});
+  hero.appendChild(pr);app.appendChild(hero);
+
+  var ob=el("div","orderbar");ob.appendChild(el("span","lbl","Team pick order"));
+  var ol=el("ol");PICK.forEach(function(x){var li=el("li",x[0]===saved?"me":null);li.appendChild(el("b",null,x[2]));li.append(x[1]);ol.appendChild(li);});
+  ob.appendChild(ol);ob.appendChild(el("span","muted small","Blind-safe roles first, counter-hungry roles last."));
+  ob.appendChild(link("Why? →","#/guide"));app.appendChild(ob);
+
+  var tabs=el("div","tabs");tabs.setAttribute("role","tablist");
+  mobileRole=mobileRole||saved||"top";
+  var board=el("div","board");
+  ROLES_ORDER.forEach(function(k){
+    var R=DATA.roles[k],U=ROLE_UI[k];
+    var tb=el("button",null,R.label);tb.type="button";tb.setAttribute("role","tab");tb.setAttribute("aria-selected",String(k===mobileRole));
+    tb.addEventListener("click",function(){mobileRole=k;store("lio-role",k);render(false);});tabs.appendChild(tb);
+    var col=el("section","col"+(k===saved?" mine":"")+(k===mobileRole?" show":""));
+    var hd=el("div","col-h");hd.insertAdjacentHTML("beforeend",ROLE_ICON[k]);hd.appendChild(el("h2",null,R.label));
+    var sl=el("div","slot");sl.appendChild(el("b",null,"Pick "+U.slot));sl.append(U.short);hd.appendChild(sl);col.appendChild(hd);
+    var ul=el("ul");
+    R.champs.forEach(function(ch){
+      var li=el("li");var a=el("a","ch");a.href="#/"+k+"/"+norm(ch.name);
+      a.addEventListener("click",function(){store("lio-role",k);});
+      a.appendChild(icon("champ",ch.name));
+      var t=el("div");t.style.minWidth="0";t.appendChild(el("div","nm",ch.name));t.appendChild(el("div","wr",ch.wr.toFixed(1)+"% · "+ch.tier));a.appendChild(t);
+      a.appendChild(el("span","go","Counter →"));
+      li.appendChild(a);ul.appendChild(li);
+    });
+    col.appendChild(ul);col.appendChild(el("p","hint",U.hint));board.appendChild(col);
   });
-  app.appendChild(g);
-  if(saved&&DATA.roles[saved]){var row=el("div","row");row.appendChild(link("Skip to "+DATA.roles[saved].label+" meta →","#/"+saved+"/meta"));app.appendChild(row);}
+  app.appendChild(tabs);app.appendChild(board);
+  var p=el("p","muted small");p.append("Enemy not on the board? Type any name in the search, or check the ");p.appendChild(link("live tier lists","https://lolalytics.com/lol/tierlist/",true));p.append(".");app.appendChild(p);
 }
-function vSlot(app,r){
-  var R=DATA.roles[r.role],U=ROLE_UI[r.role];
-  app.appendChild(el("p","eyebrow")).innerHTML="<em>Step 2</em> · When you pick";
-  app.appendChild(el("h1","title",R.label+": pick "+U.slot));
-  var s=el("ol","strip");
-  ORDER.forEach(function(o){var li=el("li",o[0]===r.role?"me":null);li.appendChild(el("span","n",o[2]));li.appendChild(el("span","r",o[1]));s.appendChild(li);});
-  app.appendChild(s);
-  var c=el("div","slotcard");c.appendChild(el("p","big",U.big));
-  c.appendChild(el("p",null,U.why));
-  var j=el("p");j.appendChild(el("b",null,U.joke));c.appendChild(j);app.appendChild(c);
-  app.appendChild(el("p","muted small","Wrong pick position? The game hands them out at random. Ask for a swap right away, not with 3 seconds left."));
-  var row=el("div","row");
-  var back=link("← Role","#/");back.className="btn ghost";row.appendChild(back);
-  var next=link("Next: the meta →","#/"+r.role+"/meta");next.className="btn";row.appendChild(next);
-  app.appendChild(row);
-}
-function vMeta(app,r){
-  var R=DATA.roles[r.role];
-  app.appendChild(el("p","eyebrow")).innerHTML="<em>Step 3</em> · What's strong";
-  app.appendChild(el("h1","title",R.label+" meta, patch "+DATA.patch));
-  app.appendChild(el("p","lede","The strongest picks people actually play. Tap the one you're laning against."));
-  var g=el("div","meta");
-  R.champs.forEach(function(ch){
-    var a=el("a","mc");a.href="#/"+r.role+"/"+norm(ch.name);
-    a.appendChild(icon("champ",ch.name));
-    var mid=el("div");mid.style.minWidth="0";mid.appendChild(el("div","nm",ch.name));
-    var st=el("div","st");st.innerHTML="<b>"+ch.wr.toFixed(1)+"%</b> win rate<br>"+ch.pr.toFixed(1)+"% pick rate";mid.appendChild(st);a.appendChild(mid);
-    a.appendChild(el("span","tier"+(ch.tier.charAt(0)==="S"?" s":""),ch.tier));
-    g.appendChild(a);
-  });
-  app.appendChild(g);
-  var p=el("p","muted small");p.append("Enemy not in the list? ");p.appendChild(link("See the full live "+R.label+" tier list","https://lolalytics.com/lol/tierlist/?lane="+R.lol,true));app.appendChild(p);
-  var row=el("div","row");var back=link("← Your slot","#/"+r.role);back.className="btn ghost";row.appendChild(back);app.appendChild(row);
-}
-function runePage(rp){
-  var wrap=el("div","runes");
-  var t1=el("div","tree");var h1=el("div","tree-h");h1.appendChild(icon("rune",rp.primary,"tree"));h1.append(rp.primary);t1.appendChild(h1);
-  var kr=el("div","rune-cell");kr.appendChild(icon("rune",rp.keystone,"key"));kr.appendChild(el("span","keyname",rp.keystone));t1.appendChild(kr);
-  var l1=el("div","rlist");rp.minors.forEach(function(n){var c=el("div","rune-cell");c.appendChild(icon("rune",n));c.appendChild(el("span","rname",n));l1.appendChild(c);});t1.appendChild(l1);
-  wrap.appendChild(t1);
-  var t2=el("div","tree");var h2=el("div","tree-h");h2.appendChild(icon("rune",rp.secondary,"tree"));h2.append(rp.secondary);t2.appendChild(h2);
-  var l2=el("div","rlist");rp.sec.forEach(function(n){var c=el("div","rune-cell");c.appendChild(icon("rune",n));c.appendChild(el("span","rname",n));l2.appendChild(c);});t2.appendChild(l2);
-  wrap.appendChild(t2);
-  var sh=el("div","shards");rp.shards.forEach(function(n){var s=el("span");s.appendChild(icon("shard",n));s.append(n);sh.appendChild(s);});wrap.appendChild(sh);
-  if(rp.unsure)wrap.appendChild(el("p","unsure","Sources disagreed on parts of this page. Double-check on the live build."));
-  return wrap;
+
+/* ---------- COUNTERS ---------- */
+function runeBlock(rp){
+  var w=el("div");
+  var trees=el("div","trees");
+  var a=el("div");var la=el("div","sec-l");la.appendChild(icon("rune",rp.primary,"tree"));la.append(rp.primary);a.appendChild(la);
+  var kr=el("div","keyrow");kr.appendChild(icon("rune",rp.keystone,"key"));kr.appendChild(el("b",null,rp.keystone));a.appendChild(kr);
+  var mi=el("div","minors");rp.minors.forEach(function(n){var d=el("div","rn");d.appendChild(icon("rune",n));d.append(n);mi.appendChild(d);});a.appendChild(mi);
+  trees.appendChild(a);
+  var b=el("div");var lb=el("div","sec-l");lb.appendChild(icon("rune",rp.secondary,"tree"));lb.append(rp.secondary);b.appendChild(lb);
+  var mi2=el("div","minors two");rp.sec.forEach(function(n){var d=el("div","rn");d.appendChild(icon("rune",n));d.append(n);mi2.appendChild(d);});b.appendChild(mi2);
+  trees.appendChild(b);w.appendChild(trees);
+  var sh=el("div","shards");rp.shards.forEach(function(n){var s=el("span");s.appendChild(icon("shard",n));s.append(n);sh.appendChild(s);});w.appendChild(sh);
+  if(rp.unsure)w.appendChild(el("p","unsure","Sources disagreed on parts of this page. Double-check on the live build."));
+  return w;
 }
 function vVs(app,r){
-  var R=DATA.roles[r.role],ch=r.champ;
-  app.appendChild(el("p","eyebrow")).innerHTML="<em>Step 4</em> · Beat your lane";
-  var head=el("div","vs-head");head.appendChild(icon("champ",ch.name,"lg"));
-  var t=el("div","t");t.appendChild(el("h1","title","vs "+ch.name));
-  var st=el("p","muted small");st.textContent=ch.tier+" tier · "+ch.wr.toFixed(1)+"% win rate · "+ch.pr.toFixed(1)+"% pick rate";t.appendChild(st);
-  head.appendChild(t);app.appendChild(head);
-  var how=el("div","howbox");how.appendChild(el("span","lbl","How to play against "+ch.name));how.appendChild(el("p",null,ch.how));var hl=el("div","links");hl.appendChild(link("All live "+ch.name+" counters ↗","https://lolalytics.com/lol/"+lolSlug(ch.name)+"/counters/?lane="+R.lol,true));how.appendChild(hl);app.appendChild(how);
+  var R=DATA.roles[r.role],U=ROLE_UI[r.role],ch=r.champ;
+  var top=el("section","vs");
+  top.appendChild(icon("champ",ch.name,"lg"));
+  var t=el("div");t.appendChild(el("p","eyebrow",R.label+" · counter picks"));t.appendChild(el("h1",null,"vs "+ch.name));
+  var sub=el("div","sub");sub.innerHTML="<span><b>"+ch.tier+"</b> tier</span><span><b>"+ch.wr.toFixed(1)+"%</b> win rate</span><span><b>"+ch.pr.toFixed(1)+"%</b> pick rate</span>";
+  var back=link("Esc · back to board","#/"+r.role);back.style.fontFamily="var(--mono)";back.style.fontSize=".75rem";sub.appendChild(back);t.appendChild(sub);top.appendChild(t);
+  var sw=el("div","switch");sw.appendChild(el("span",null,"Other "+R.label));
+  R.champs.forEach(function(o){var a=el("a",norm(o.name)===norm(ch.name)?"cur":null);a.href="#/"+r.role+"/"+norm(o.name);a.title=o.name;a.appendChild(icon("champ",o.name,"sm"));sw.appendChild(a);});
+  top.appendChild(sw);app.appendChild(top);
+
+  var s2=el("div","strip2");
+  var n1=el("div","note timing");n1.appendChild(el("span","lbl","When you pick"));n1.appendChild(el("p",null,U.timing));s2.appendChild(n1);
+  var n2=el("div","note");n2.appendChild(el("span","lbl","Playing against "+ch.name));n2.appendChild(el("p",null,ch.how));s2.appendChild(n2);
+  app.appendChild(s2);
   if(r.role==="adc"&&ch.name==="Jinx")app.appendChild(el("p","warn","No ADC really counters Jinx this patch. These are the least bad options. Honestly: ban her or play your main."));
-  app.appendChild(el("h2",null,"Pick one of these"));
-  var list=el("div","counters");
-  ch.counters.forEach(function(c){
-    var card=el("article","cc");
-    var hd=el("div","cc-head");hd.appendChild(icon("champ",c.name));hd.appendChild(el("h3",null,c.name));
+
+  var cards=el("div","cards");
+  ch.counters.slice().sort(function(a,b){return b.wr_vs-a.wr_vs;}).forEach(function(c,i){
+    var card=el("article","cc"+(i===0?" best":""));
+    var hd=el("div","cc-head");hd.appendChild(icon("champ",c.name,"md"));
+    var nm=el("div");nm.appendChild(el("span","rank",i===0?"Best counter":"Also good"));nm.appendChild(el("h3",null,c.name));hd.appendChild(nm);
     var w=el("div","wr",c.wr_vs.toFixed(1)+"%");w.appendChild(el("small",null,"wins vs "+ch.name));hd.appendChild(w);card.appendChild(hd);
-    var body=el("div","cc-body");
-    var rc=el("div");rc.appendChild(el("span","lbl","Rune page"));if(c.runes)rc.appendChild(runePage(c.runes));body.appendChild(rc);
-    var ic=el("div");ic.appendChild(el("span","lbl","Core items"));var its=el("div","items");
-    c.items.forEach(function(n,i){var row=el("div","item-row");row.appendChild(el("span","num",String(i+1)));row.appendChild(icon("item",n));row.appendChild(el("span",null,n));its.appendChild(row);});
-    ic.appendChild(its);body.appendChild(ic);card.appendChild(body);
+    if(c.runes)card.appendChild(runeBlock(c.runes));
+    var iw=el("div");iw.appendChild(el("div","sec-l","Core items"));var its=el("div","items");
+    c.items.forEach(function(n,j){var d=el("div","it");d.appendChild(icon("item",n));d.appendChild(el("span","n",String(j+1)));d.append(n);its.appendChild(d);});
+    iw.appendChild(its);card.appendChild(iw);
     var tip=el("p","tip");tip.appendChild(el("b",null,"How to play it: "));tip.append(c.tip);card.appendChild(tip);
     var ln=el("div","links");
-    ln.appendChild(link("Live "+c.name+" build ↗","https://lolalytics.com/lol/"+lolSlug(c.name)+"/build/?lane="+R.lol,true));
-    ln.appendChild(link(c.name+" vs "+ch.name+" ↗","https://lolalytics.com/lol/"+lolSlug(c.name)+"/vs/"+lolSlug(ch.name)+"/build/?lane="+R.lol+"&vslane="+R.lol,true));
-    card.appendChild(ln);list.appendChild(card);
+    ln.appendChild(link("Live build ↗","https://lolalytics.com/lol/"+lolSlug(c.name)+"/build/?lane="+R.lol,true));
+    ln.appendChild(link("Matchup ↗","https://lolalytics.com/lol/"+lolSlug(c.name)+"/vs/"+lolSlug(ch.name)+"/build/?lane="+R.lol+"&vslane="+R.lol,true));
+    card.appendChild(ln);cards.appendChild(card);
   });
-  app.appendChild(list);
+  app.appendChild(cards);
   var row=el("div","row");
-  var back=link("← Meta","#/"+r.role+"/meta");back.className="btn ghost";row.appendChild(back);
   var cp=el("button","btn");cp.type="button";cp.textContent="Copy link for lobby chat";
   var toast=el("span","toast");toast.setAttribute("aria-live","polite");
-  cp.addEventListener("click",function(){copyText(location.href,toast,"Link copied. Paste it, then stfu.");});
-  row.appendChild(cp);row.appendChild(toast);app.appendChild(row);
+  cp.addEventListener("click",function(){copyText(location.href,toast,"Copied. Paste it, then stfu.");});
+  row.appendChild(cp);row.appendChild(link("All live "+ch.name+" counters ↗","https://lolalytics.com/lol/"+lolSlug(ch.name)+"/counters/?lane="+R.lol,true));row.appendChild(toast);
+  app.appendChild(row);
   var s=el("div","stfu");s.appendChild(el("h2",null,"Now STFU and lock in."));app.appendChild(s);
 }
+
+/* ---------- GUIDE / RATE ---------- */
 function vGuide(app){
-  app.appendChild(el("p","eyebrow","The long version"));
-  var h=el("h1","title");h.innerHTML="Why this pick order? <span>Read it once, never argue again.</span>";app.appendChild(h);
-  var s=el("ol","strip");ORDER.forEach(function(o){var li=el("li");li.appendChild(el("span","n",o[2]));li.appendChild(el("span","r",o[1]));s.appendChild(li);});app.appendChild(s);
-  var facts=el("div","callout");facts.appendChild(el("h2",null,"How the lobby works"));
-  facts.appendChild(el("p","muted","Blue side picks first. Red side gets pick 10, the only guaranteed counterpick in the game. Inside your team the pick order is random and has nothing to do with your role. That's why swaps exist."));app.appendChild(facts);
-  var c=el("div","callout");c.appendChild(el("h2",null,"Blind-safe first, counter-hungry last"));
-  c.appendChild(el("p","muted","Jungle has no lane to lose. ADC matchups barely move win rates this patch. Supports pick after their ADC for synergy, and support counters actually swing games. Mid matchups swing harder still, and top is a 15-minute 1v1 island where a bad matchup hurts most. So top picks last."));app.appendChild(c);
-  var cc=el("div","callout");cc.appendChild(el("h2",null,"Comfort beats counter"));
-  cc.appendChild(el("p","muted","A champion you actually play beats a counter you've played twice. Counters matter most in top and mid, somewhat for support, and barely for ADC. If your main isn't in our list, play your main."));app.appendChild(cc);
-  app.appendChild(el("h2",null,"Lobby etiquette for the chronically online"));
+  var w=el("div","narrow");
+  w.appendChild(el("p","eyebrow","The long version"));
+  var h=el("h1");h.innerHTML="Why this pick order? <span>Read it once, never argue again.</span>";w.appendChild(h);
+  var ob=el("div","orderbar");ob.appendChild(el("span","lbl","Team pick order"));var ol=el("ol");PICK.forEach(function(x){var li=el("li");li.appendChild(el("b",null,x[2]));li.append(x[1]);ol.appendChild(li);});ob.appendChild(ol);w.appendChild(ob);
+  [["How the lobby works","Blue side picks first. Red side gets pick 10, the only guaranteed counterpick in the game. Inside your team the pick order is random and has nothing to do with your role. That's why swaps exist."],
+   ["Blind-safe first, counter-hungry last","Jungle has no lane to lose. ADC matchups barely move win rates this patch. Supports pick after their ADC for synergy, and support counters actually swing games. Mid matchups swing harder still, and top is a 15-minute 1v1 island where a bad matchup hurts most. So top picks last."],
+   ["Comfort beats counter","A champion you actually play beats a counter you've played twice. Counters matter most in top and mid, somewhat for support, and barely for ADC. If your main isn't on the board, play your main."]].forEach(function(x){var c=el("div","callout");c.appendChild(el("h2",null,x[0]));c.appendChild(el("p","muted",x[1]));w.appendChild(c);});
+  w.appendChild(el("h2",null,"Lobby etiquette for the chronically online"));
   var ul=el("ul","rules");
-  [["do","Hover your champ early.","Your team can plan around it."],["do","Ask for a swap right away.","The timer does not care about your feelings."],["","Don't blind-lock a counterpick.","A counter picked before the enemy shows their champ is just a random champ."],["","Don't flame first pick.","Someone has to go first."],["","Don't write essays.","In ranked you're literally named Krug. Nobody will remember your take."]].forEach(function(x){
-    var li=el("li",x[0]||null);var d=el("div");d.appendChild(el("b",null,x[1]+" "));d.appendChild(el("span",null,x[2]));li.appendChild(d);ul.appendChild(li);});
-  app.appendChild(ul);
-  var chat=el("div","chat");chat.appendChild(el("span","lbl","Paste this in lobby chat"));
-  var msg="pick order pls: jg & adc first, sup 3rd, mid 4th, top last. comfort > counter. guide: "+location.origin+location.pathname;
+  [["do","Hover your champ early.","Your team can plan around it."],["do","Ask for a swap right away.","The timer does not care about your feelings."],["","Don't blind-lock a counterpick.","A counter picked before the enemy shows their champ is just a random champ."],["","Don't flame first pick.","Someone has to go first."],["","Don't write essays.","In ranked you're literally named Krug. Nobody will remember your take."]].forEach(function(x){var li=el("li",x[0]||null);var d=el("div");d.appendChild(el("b",null,x[1]+" "));d.appendChild(el("span",null,x[2]));li.appendChild(d);ul.appendChild(li);});
+  w.appendChild(ul);
+  var chat=el("div","chat");chat.appendChild(el("span","eyebrow","Paste this in lobby chat"));
+  var msg="pick order pls: jg & adc first, sup 3rd, mid 4th, top last. counters: "+location.origin+"/";
   chat.appendChild(el("code",null,msg));
   var row=el("div","row");var b=el("button","btn","Copy message");b.type="button";var toast=el("span","toast");toast.setAttribute("aria-live","polite");
-  b.addEventListener("click",function(){copyText(msg,toast,"Copied. Now go.");});row.appendChild(b);row.appendChild(toast);chat.appendChild(row);app.appendChild(chat);
-  var nx=el("div","callout");nx.appendChild(el("h2",null,"Next lobby"));nx.appendChild(el("p","muted","Someone arguing about pick order again? Don't type it out. Drop this page's link in chat and let it do the talking while you do the hovering."));app.appendChild(nx);
-  var st=el("div","stfu");st.appendChild(el("h2",null,"Now STFU and lock in."));app.appendChild(st);
+  b.addEventListener("click",function(){copyText(msg,toast,"Copied. Now go.");});row.appendChild(b);row.appendChild(toast);chat.appendChild(row);w.appendChild(chat);
+  var st=el("div","stfu");st.appendChild(el("h2",null,"Now STFU and lock in."));w.appendChild(st);
   var sp=el("p","muted small");sp.append("Sources: ");sp.appendChild(link("TurboSmurfs on counter picking","https://turbosmurfs.gg/article/how-to-counter-pick-in-lol",true));sp.append(" · ");
   sp.appendChild(link("Boosting Market counter-pick guide","https://boostingmarket.com/blogs/lol-counter-pick-guide-by-lane/",true));sp.append(" · ");
-  sp.appendChild(link("Riot patch 26.19 notes","https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-19-notes/",true));app.appendChild(sp);
+  sp.appendChild(link("Riot patch 26.19 notes","https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-19-notes/",true));w.appendChild(sp);
+  app.appendChild(w);
 }
 function vRate(app){
-  app.appendChild(el("p","eyebrow","Feedback"));
-  var h=el("h1","title");h.innerHTML="Did it help? <span>Or are you still typing?</span>";app.appendChild(h);
-  app.appendChild(el("p","lede","Give it 1 to 5 stars, name optional. Takes ten seconds, less than one flame message."));
-  if(RATE_URL){var a=link("Rate Lock In Order ↗",RATE_URL,true);a.className="btn";var row=el("div","row");row.appendChild(a);app.appendChild(row);}
-  else app.appendChild(el("div","banner","The rating form is coming soon."));
+  var w=el("div","narrow");w.appendChild(el("p","eyebrow","Feedback"));
+  var h=el("h1");h.innerHTML="Did it help? <span>Or are you still typing?</span>";w.appendChild(h);
+  w.appendChild(el("p","muted","Give it 1 to 5 stars, name optional. Takes ten seconds, less than one flame message."));
+  if(RATE_URL){var a=link("Rate Lock In Order ↗",RATE_URL,true);a.className="btn";var row=el("div","row");row.appendChild(a);w.appendChild(row);}
+  else w.appendChild(el("div","banner","The rating form is coming soon."));
+  app.appendChild(w);
 }
+
+/* ---------- search ---------- */
+var q=document.getElementById("q"),res=document.getElementById("res"),sel=0,hits=[];
+function doSearch(){
+  var s=norm(q.value);res.textContent="";hits=[];
+  if(!s||!DATA){res.hidden=true;q.setAttribute("aria-expanded","false");return;}
+  hits=INDEX.filter(function(x){return x.key.indexOf(s)===0;}).concat(INDEX.filter(function(x){return x.key.indexOf(s)>0;}));
+  if(!hits.length){var li=el("li");var a=link("No meta pick matches. Look it up live ↗","https://lolalytics.com/lol/"+s+"/counters/",true);li.appendChild(a);res.appendChild(li);}
+  sel=0;hits.slice(0,8).forEach(function(x,i){
+    var li=el("li");var a=el("a");a.href="#/"+x.role+"/"+x.key;a.setAttribute("role","option");a.setAttribute("aria-selected",String(i===sel));
+    a.appendChild(icon("champ",x.ch.name,"sm"));a.append(x.ch.name);a.appendChild(el("small",null,DATA.roles[x.role].label));
+    a.addEventListener("mousedown",function(e){e.preventDefault();go(x);});li.appendChild(a);res.appendChild(li);
+  });
+  res.hidden=false;q.setAttribute("aria-expanded","true");
+}
+function go(x){store("lio-role",x.role);q.value="";res.hidden=true;q.blur();location.hash="#/"+x.role+"/"+x.key;}
+q.addEventListener("input",doSearch);
+q.addEventListener("keydown",function(e){
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){if(!hits.length)return;e.preventDefault();sel=(sel+(e.key==="ArrowDown"?1:-1)+Math.min(hits.length,8))%Math.min(hits.length,8);
+    [].forEach.call(res.querySelectorAll("a[role=option]"),function(a,i){a.setAttribute("aria-selected",String(i===sel));});}
+  else if(e.key==="Enter"){if(hits[sel]){e.preventDefault();go(hits[sel]);}}
+  else if(e.key==="Escape"){q.value="";doSearch();q.blur();}
+});
+q.addEventListener("blur",function(){setTimeout(function(){res.hidden=true;},120);});
+document.addEventListener("keydown",function(e){
+  if(e.target===q)return;
+  if(e.key==="/"){e.preventDefault();q.focus();}
+  else if(e.key==="Escape"){var r=route();if(r.view!=="home"||r.role)location.hash=r.role?"#/"+r.role:"#/";}
+});
 
 /* ---------- copy ---------- */
 function copyText(t,toast,ok){
@@ -425,18 +468,21 @@ function render(focus){
   if(!DATA){app.appendChild(el("p","muted","Loading…"));return;}
   var r=route();
   if(r.role)store("lio-role",r.role);
-  progress(r);
   var b=staleBanner();if(b)app.appendChild(b);
-  ({role:vRole,slot:vSlot,meta:vMeta,vs:vVs,guide:vGuide,rate:vRate})[r.view](app,r);
-  var titles={role:"Lock In Order",slot:"Pick order",meta:"Meta",vs:r.champ?"vs "+r.champ.name:"",guide:"Why this order",rate:"Rate"};
-  document.title=(r.role&&r.view!=="role"?DATA.roles[r.role].label+" · ":"")+titles[r.view]+(r.view==="role"?"":" · Lock In Order");
-  if(focus){window.scrollTo(0,0);app.focus({preventScroll:true});}
+  ({home:vHome,vs:vVs,guide:vGuide,rate:vRate})[r.view](app,r);
+  document.getElementById("nav-guide").toggleAttribute("aria-current",r.view==="guide");
+  document.getElementById("nav-rate").toggleAttribute("aria-current",r.view==="rate");
+  document.title=r.view==="vs"?"vs "+r.champ.name+" ("+DATA.roles[r.role].label+") · Lock In Order":r.view==="guide"?"Why this order · Lock In Order":r.view==="rate"?"Rate · Lock In Order":"Lock In Order · counters in 2 clicks";
+  if(focus){window.scrollTo(0,0);}
 }
 window.addEventListener("hashchange",function(){render(true);});
+loadDD().then(function(changed){if(changed!==false)render(false);}).catch(function(){});
 fetch("data.json",{cache:"no-cache"}).then(function(r){return r.json();}).then(function(d){
-  DATA=d;document.getElementById("foot-data").textContent="Stats: patch "+d.patch+", "+d.rank+", updated "+d.updated+".";render(false);
+  DATA=d;buildIndex();
+  document.getElementById("foot-data").textContent="Stats: patch "+d.patch+", "+d.rank+", updated "+d.updated+".";
+  render(false);
+  if(matchMedia("(min-width: 900px) and (pointer: fine)").matches&&route().view==="home")q.focus({preventScroll:true});
 }).catch(function(){var a=document.getElementById("app");a.textContent="";a.appendChild(el("p","banner","Couldn't load the data. Refresh the page."));});
-loadDD().then(function(){render(false);}).catch(function(){/* icons fall back to initials */});
 </script>
 </body>
 </html>
